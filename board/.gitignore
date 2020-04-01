@@ -1,0 +1,22 @@
+# board KiCad
+#   Ignore these files
+*~
+*.bak
+*.bck
+*.log
+*.net
+*.raw
+*.kicad_pcb-bak
+_saved_*.sch
+
+*/rescue-backup/*
+
+# export files for BOM
+*.csv
+*.tsv
+*.xml
+# backup files
+*bak
+
+fp-info-cache
+

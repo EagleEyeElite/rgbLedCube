@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name 01._RGB_Led_Cube-cache)(type Legacy)(uri ${KIPRJMOD}/rgbLedCube-cache.lib)(options "")(descr ""))
+  (lib (name 01.-RGB-Led-Cube-rescue)(type Legacy)(uri ${KIPRJMOD}/rgbLedCube-rescue.lib)(options "")(descr ""))
+)

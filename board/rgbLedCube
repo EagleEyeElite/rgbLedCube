@@ -1,0 +1,267 @@
+.HEA
+.TIM Mon 06 Apr 2020 11:00:43 AM CEST
+.APP "Eeschema 5.1.5-52549c5~86~ubuntu18.04.1"
+
+.ADD_COM PWM1 TLC5940NT  Housings_DIP:DIP-28_W7.62mm
+.ADD_COM L0 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM L1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM L2 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P00-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P00-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P00-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P10-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P10-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P10-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P20-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P20-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P20-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P01-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P01-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P01-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P11-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P11-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P11-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P21-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P21-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P21-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P02-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P02-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P02-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P12-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P12-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P12-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P22-R1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P22-G1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM P22-B1 Conn_01x01  Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm
+.ADD_COM µ-Controller1 ATMEGA1284P-AU  Housings_QFP:TQFP-44_10x10mm_Pitch0.8mm
+.ADD_COM CON1 AVR-ISP-6  Pin_Headers:Pin_Header_Angled_2x03_Pitch2.54mm
+.ADD_COM J1 USB_OTG  MyFootprints:USB_Micro_Conn_Reichelt_Version_2
+.ADD_COM Y0 20MHZ  Crystals:Crystal_SMD_HC49-SD
+.ADD_COM R5 2k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM RK09K111-LOG10K1 10K  MyFootprints:Potentiometer-Alps
+.ADD_COM R4 2k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM SW1 SW_DIP_x01  Buttons_Switches_THT:SW_Tactile_SPST_Angled_PTS645Vx83-2LFS
+.ADD_COM R1 10K  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM C1 22pF  Capacitors_SMD:C_0603_HandSoldering
+.ADD_COM C2 22pF  Capacitors_SMD:C_0603_HandSoldering
+.ADD_COM D1 Led-On  LEDs:LED_0603_HandSoldering
+.ADD_COM R3 10K  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM R7 150  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM R8 150  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM R9 150  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM C3 0.1 µF  Capacitors_SMD:C_0603_HandSoldering
+.ADD_COM C4 10 µF  Capacitors_SMD:CP_Elec_5x5.3
+.ADD_COM C5 100 µF  Capacitors_SMD:CP_Elec_5x5.8
+.ADD_COM Q1 2N3904  TO_SOT_Packages_THT:TO-92_Molded_Narrow
+.ADD_COM R2 10k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM R6 1k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM SW2 SW_DIP_x01  Buttons_Switches_THT:SW_Tactile_SPST_Angled_PTS645Vx83-2LFS
+.ADD_COM R10 10k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM C6 1000µF  Capacitors_SMD:CP_Elec_10x10.5
+.ADD_COM J2 Conn_01x02_Female  Pin_Headers:Pin_Header_Angled_1x02_Pitch2.54mm
+.ADD_COM U1 TSOP312xx  Opto-Devices:IRReceiver_Vishay_CAST-3pin
+.ADD_COM C7 0.1 µF  Capacitors_SMD:C_0603_HandSoldering
+.ADD_COM R11 300  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM Q2 AO 3415A  TO_SOT_Packages_SMD:SOT-23
+.ADD_COM Q3 AO 3415A  TO_SOT_Packages_SMD:SOT-23
+.ADD_COM Q4 AO 3415A  TO_SOT_Packages_SMD:SOT-23
+.ADD_COM R12 10k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM R13 10k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM R14 10k  Resistors_SMD:R_0805_HandSoldering
+.ADD_COM C9 100nF  Capacitors_SMD:C_0603_HandSoldering
+.ADD_COM C10 100nF  Capacitors_SMD:C_0603_HandSoldering
+.ADD_COM PWM0 TLC5940NT  Housings_DIP:DIP-28_W7.62mm
+.ADD_COM C8 100nF  Capacitors_SMD:C_0603_HandSoldering
+
+
+.ADD_TER P12-G1.1  Net-(P12-G1-Pad1)
+.TER     PWM1.28
+.ADD_TER P12-R1.1  Net-(P12-R1-Pad1)
+.TER     PWM0.15
+.ADD_TER P11-B1.1  Net-(P11-B1-Pad1)
+.TER     PWM0.14
+.ADD_TER P11-G1.1  Net-(P11-G1-Pad1)
+.TER     PWM0.13
+.ADD_TER PWM1.6  Net-(P21-G1-Pad1)
+.TER     P21-G1.1
+.ADD_TER P21-R1.1  Net-(P21-R1-Pad1)
+.TER     PWM1.5
+.ADD_TER PWM1.4  Net-(P20-B1-Pad1)
+.TER     P20-B1.1
+.ADD_TER PWM1.3  Net-(P20-G1-Pad1)
+.TER     P20-G1.1
+.ADD_TER PWM1.2  Net-(P20-R1-Pad1)
+.TER     P20-R1.1
+.ADD_TER PWM1.1  Net-(P12-B1-Pad1)
+.TER     P12-B1.1
+.ADD_TER P02-R1.1  Net-(P02-R1-Pad1)
+.TER     PWM0.6
+.ADD_TER P02-B1.1  Net-(P02-B1-Pad1)
+.TER     PWM0.8
+.ADD_TER PWM0.7  Net-(P02-G1-Pad1)
+.TER     P02-G1.1
+.ADD_TER P01-B1.1  Net-(P01-B1-Pad1)
+.TER     PWM0.5
+.ADD_TER PWM0.11  Net-(P10-B1-Pad1)
+.TER     P10-B1.1
+.ADD_TER PWM0.12  Net-(P11-R1-Pad1)
+.TER     P11-R1.1
+.ADD_TER PWM0.10  Net-(P10-G1-Pad1)
+.TER     P10-G1.1
+.ADD_TER P10-R1.1  Net-(P10-R1-Pad1)
+.TER     PWM0.9
+.ADD_TER SW1.2  /RST
+.TER     R1.1
+         CON1.5
+         µ-Controller1.4
+.ADD_TER µ-Controller1.1  Net-(CON1-Pad4)
+.TER     CON1.4
+.ADD_TER CON1.3  Net-(CON1-Pad3)
+.TER     µ-Controller1.3
+.ADD_TER µ-Controller1.2  Net-(CON1-Pad1)
+.TER     CON1.1
+.ADD_TER PWM1.26  Net-(PWM0-Pad17)
+.TER     PWM0.17
+.ADD_TER P22-B1.1  Net-(P22-B1-Pad1)
+.TER     PWM1.10
+.ADD_TER P22-G1.1  Net-(P22-G1-Pad1)
+.TER     PWM1.9
+.ADD_TER P22-R1.1  Net-(P22-R1-Pad1)
+.TER     PWM1.8
+.ADD_TER P21-B1.1  Net-(P21-B1-Pad1)
+.TER     PWM1.7
+.ADD_TER C1.1  Net-(C1-Pad1)
+.TER     Y0.2
+         µ-Controller1.7
+.ADD_TER µ-Controller1.8  Net-(C2-Pad1)
+.TER     Y0.1
+         C2.1
+.ADD_TER R5.1  Net-(R4-Pad1)
+.TER     RK09K111-LOG10K1.3
+         R4.1
+.ADD_TER R5.2  Net-(PWM0-Pad20)
+.TER     PWM0.20
+.ADD_TER R4.2  Net-(PWM1-Pad20)
+.TER     PWM1.20
+.ADD_TER µ-Controller1.13  /SCLK
+.TER     PWM1.25
+         PWM0.25
+.ADD_TER PWM0.28  Net-(P00-R1-Pad1)
+.TER     P00-R1.1
+.ADD_TER C9.2  GND
+.TER     RK09K111-LOG10K1.2
+         C2.2
+         C1.2
+         J1.6
+         J1.5
+         Q1.1
+         CON1.6
+         µ-Controller1.6
+         µ-Controller1.28
+         R3.1
+         PWM1.22
+         µ-Controller1.39
+         µ-Controller1.18
+         SW1.1
+         C6.2
+         J2.1
+         R10.1
+         C7.2
+         C4.2
+         C3.2
+         C5.2
+         C8.2
+         C10.2
+         PWM0.22
+         U1.1
+.ADD_TER P00-G1.1  Net-(P00-G1-Pad1)
+.TER     PWM0.1
+.ADD_TER P00-B1.1  Net-(P00-B1-Pad1)
+.TER     PWM0.2
+.ADD_TER R11.2  Net-(C7-Pad1)
+.TER     C7.1
+         U1.2
+.ADD_TER µ-Controller1.11  /IR-Recevier
+.TER     U1.3
+.ADD_TER PWM0.4  Net-(P01-G1-Pad1)
+.TER     P01-G1.1
+.ADD_TER PWM0.3  Net-(P01-R1-Pad1)
+.TER     P01-R1.1
+.ADD_TER Q2.3  Net-(L0-Pad1)
+.TER     L0.1
+.ADD_TER R12.2  Net-(Q2-Pad1)
+.TER     Q2.1
+         R7.1
+.ADD_TER Q3.1  Net-(Q3-Pad1)
+.TER     R8.1
+         R13.2
+.ADD_TER Q4.1  Net-(Q4-Pad1)
+.TER     R9.1
+         R14.2
+.ADD_TER L1.1  Net-(L1-Pad1)
+.TER     Q3.3
+.ADD_TER L2.1  Net-(L2-Pad1)
+.TER     Q4.3
+.ADD_TER µ-Controller1.42  Net-(SW2-Pad1)
+.TER     SW2.1
+.ADD_TER R2.2  Net-(R2-Pad2)
+.TER     µ-Controller1.9
+.ADD_TER µ-Controller1.19  Net-(R7-Pad2)
+.TER     R7.2
+.ADD_TER µ-Controller1.20  Net-(R8-Pad2)
+.TER     R8.2
+.ADD_TER R9.2  Net-(R9-Pad2)
+.TER     µ-Controller1.21
+.ADD_TER PWM0.27  /VPRG
+.TER     PWM1.27
+         µ-Controller1.10
+.ADD_TER µ-Controller1.12  /Serial
+.TER     PWM0.26
+.ADD_TER PWM0.18  /GSCLK
+.TER     µ-Controller1.14
+         PWM1.18
+.ADD_TER PWM0.24  /XLAT
+.TER     µ-Controller1.15
+         PWM1.24
+.ADD_TER µ-Controller1.16  Net-(D1-Pad2)
+.TER     D1.2
+.ADD_TER PWM0.23  /BLANK
+.TER     PWM1.23
+         R6.2
+         Q1.3
+.ADD_TER R10.2  Net-(R10-Pad2)
+.TER     SW2.2
+.ADD_TER R6.1  +5V
+.TER     J1.1
+         C3.1
+         C4.1
+         C5.1
+         Q3.2
+         Q2.2
+         C9.1
+         Q4.2
+         R12.1
+         R14.1
+         R13.1
+         µ-Controller1.29
+         µ-Controller1.17
+         R1.2
+         µ-Controller1.27
+         CON1.2
+         µ-Controller1.5
+         PWM1.19
+         PWM1.21
+         µ-Controller1.38
+         PWM0.21
+         PWM0.19
+         C10.1
+         C8.1
+         J2.2
+         R11.1
+         C6.1
+.ADD_TER Q1.2  Net-(Q1-Pad2)
+.TER     R2.1
+.ADD_TER D1.1  Net-(D1-Pad1)
+.TER     R3.2
+
+.END

@@ -18,3 +18,4 @@ mistakes:
     - too big capacitors (1000µF)
     - 22pf capacitor for 20 mhz crystal seems to break it
     - no usart serial port for debugging
+    - n-channel mosfet would be better

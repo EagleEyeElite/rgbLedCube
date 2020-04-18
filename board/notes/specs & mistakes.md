@@ -19,3 +19,4 @@ mistakes:
     - 22pf capacitor for 20 mhz crystal seems to break it
     - no usart serial port for debugging
     - n-channel mosfet would be better
+    - no readout for TLC error register (useful for debugging)

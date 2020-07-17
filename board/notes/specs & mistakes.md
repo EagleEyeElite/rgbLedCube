@@ -20,3 +20,5 @@ mistakes:
     - no usart serial port for debugging
     - n-channel mosfet would be better
     - no readout for TLC error register (useful for debugging)
+    - dedicated reset button, button that triggers software reset would be better
+     

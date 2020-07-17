@@ -9,8 +9,44 @@
 //#define maxValue (pow(2, 12)-1)
 #define maxValue (pow(2, 10)-1)
 #define interval 2000
+#define VPRG 12
+#define XLAT 9
+#define SIN 11
+#define SCLK 13
+#define BLANK 10
+#define GSCLK 3
 
 void setup() {
+  digitalWrite(VPRG, HIGH);
+  pinMode(VPRG, OUTPUT);
+  digitalWrite(XLAT, LOW);
+  pinMode(XLAT, OUTPUT);
+  digitalWrite(SIN, HIGH);
+  pinMode(SIN, OUTPUT);
+  digitalWrite(SCLK, LOW);
+  pinMode(SCLK, OUTPUT);
+  digitalWrite(BLANK, LOW);
+  pinMode(BLANK, OUTPUT);
+  digitalWrite(GSCLK, LOW);
+  pinMode(GSCLK, OUTPUT);
+  delay(3);
+
+  for(unsigned int i=0; i<100; i++) {
+    digitalWrite(SCLK, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(SCLK, LOW);
+    delayMicroseconds(10);
+  }
+  delay(3);
+  digitalWrite(XLAT, HIGH);
+  delay(3);
+  digitalWrite(XLAT, LOW);
+
+  delay(3);
+  digitalWrite(VPRG, LOW);
+  
+  delay(3);
+  
   Tlc.init(0); // Initiates the TLC5940 and set all channels off
 }
 
@@ -33,7 +69,7 @@ void loop() {
   
    
   setLed(maxValue, maxValue, maxValue);
-  delay(2000);
+  delay(3000);
 
   setLed(maxValue, 0, 0);
   delay(2000);

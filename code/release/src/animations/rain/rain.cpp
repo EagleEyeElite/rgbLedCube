@@ -4,20 +4,20 @@
 
 #include <stdlib.h>
 #include "../../interface/interface.h"
-#include "drop.h"
+#include "Drop.h"
 
 void rain() {
-    clock Watch(8000);
-    frame FrameA(true);
+    Clock Watch(8000);
+    Frame FrameA(true);
 
-    drop Rain[9];
+    Drop Rain[9];
     unsigned int hue = (unsigned int) rand() % 360;
     for (unsigned int i = 0; i < 9; i++) {
         Rain[i].koo[0] = (float) (i % 3) + 1;
         Rain[i].koo[1] = (float) ((i / 3) % 3) + 1;
 
-        auto *s = (colour *) malloc(sizeof(colour));
-        *s = colour();
+        auto *s = (Color *) malloc(sizeof(Color));
+        *s = Color();
         (*s).loadHSV(hue, (uint8_t) (100 + (rand() % 155)), 255);
         Rain[i].rain = s;
     }

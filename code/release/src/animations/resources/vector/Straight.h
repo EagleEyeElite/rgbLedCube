@@ -1,5 +1,5 @@
 /*
- * straight.h
+ * Straight.h
  *
  * Created: 18/01/2019 00:25:26
  *  Author: Conrad
@@ -12,19 +12,19 @@
 #ifndef STRAIGHT_H_
 #define STRAIGHT_H_
 
-class straight {
+class Straight {
 public:
-    straight(vect &support, vect &directionA);
+    Straight(vect &support, vect &directionA);
 
-    ~straight();
+    ~Straight();
 
-    void loadStraight(frame &straightFrame);
+    void loadStraight(Frame &straightFrame);
 
 private:
     vect *support{};
     vect *direction{};
 
-    colour *colours;
+    Color *colours;
 };
 
 #endif /* STRAIGHT_H_ */

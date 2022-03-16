@@ -11,9 +11,9 @@
 
 #include "miscellaneous/basic.h"
 #include "snake/snake.h"
-#include "plainTransitions/rotations.h"
-#include "plainTransitions/slide.h"
-#include "rain/drop.h"
+#include "continuousTransitions/vectorTransition.h"
+#include "continuousTransitions/plainTransition.h"
+#include "rain/Drop.h"
 
 void runAnimations() __attribute__((noreturn));
 

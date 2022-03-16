@@ -2,9 +2,9 @@
 // Created by conrad on 3/19/20.
 //
 
-#include "graph.h"
+#include "Graph.h"
 #include "../resources/vector/vect.h"
-#include "plot.h"
+#include "Plot.h"
 #include <math.h>
 
 static float ix(float x) {
@@ -20,10 +20,10 @@ static float iz(float x __attribute__((unused))) {
 }
 
 void infinityFigure() {
-    clock Watch(1000);
-    frame FrameA(true);
+    Clock Watch(1000);
+    Frame FrameA(true);
     vect support(2, 2, 2);
-    plot plot(support, ix, iy, iz);
+    Plot plot(support, ix, iy, iz);
 
     while (Watch.getProgress() <= 10) {
         plot.loadPoint(FrameA, Watch.getProgress() * 2 * (float) M_PI);
@@ -44,10 +44,10 @@ static float cz(float x) {
 }
 
 void circleFigure() {
-    clock Watch(1000);
-    frame FrameA(true);
+    Clock Watch(1000);
+    Frame FrameA(true);
     vect support(2, 2, 2);
-    plot plot(support, cx, cy, cz);
+    Plot plot(support, cx, cy, cz);
 
     while (Watch.getProgress() <= 10) {
         plot.loadPoint(FrameA, Watch.getProgress() * 2 * (float) M_PI);

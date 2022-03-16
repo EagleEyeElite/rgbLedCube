@@ -1,30 +1,30 @@
 /*
- * straight.cpp
+ * Straight.cpp
  *
  * Created: 18/01/2019 00:24:30
  *  Author: Conrad
  */
 
 #include <stdlib.h>
-#include "straight.h"
+#include "Straight.h"
 
 #include "vect.h"
 #include "../../../interface/interface.h"
 
-straight::straight(vect &supportX, vect &directionA) {
+Straight::Straight(vect &supportX, vect &directionA) {
     support = &supportX;
     direction = &directionA;
 
-    colours = (colour *) malloc(sizeof(colour));
-    *colours = colour();
+    colours = (Color *) malloc(sizeof(Color));
+    *colours = Color();
     (*colours).loadHSV((unsigned int) rand() % 360, 255, 255);
 }
 
-straight::~straight() {
+Straight::~Straight() {
     free(colours);
 }
 
-void straight::loadStraight(frame &straightFrame) {
+void Straight::loadStraight(Frame &straightFrame) {
     straightFrame.resetFrame();
 
     float supportTemp[3];
@@ -43,4 +43,4 @@ void straight::loadStraight(frame &straightFrame) {
     }
 }
 
-//straight
+//Straight

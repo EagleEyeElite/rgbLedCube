@@ -8,12 +8,12 @@
 #include <stdlib.h> //rand
 
 void randomVocals() {
-    clock Watch(100);
-    frame FrameA(true);
+    Clock Watch(100);
+    Frame FrameA(true);
 
     bool vocal[9];
 
-    colour B = colour();
+    Color B = Color();
     B.loadHSV((unsigned int) rand() % 360, 255, 255);
 
     for (bool &i : vocal) {    //place all Vocals (up or down)

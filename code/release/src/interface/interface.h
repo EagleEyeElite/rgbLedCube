@@ -9,9 +9,9 @@
 #ifndef INTERFACE_H_
 #define INTERFACE_H_
 
-#include "clock.h"
-#include "colour.h"
-#include "frame.h"
+#include "Clock.h"
+#include "Color.h"
+#include "Frame.h"
 #include "img_preset.h"
 
 

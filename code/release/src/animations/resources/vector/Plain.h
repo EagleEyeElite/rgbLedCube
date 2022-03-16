@@ -1,5 +1,5 @@
 /*
- * plain.h
+ * Plain.h
  *
  * Created: 18/01/2019 00:25:11
  *  Author: Conrad
@@ -12,17 +12,17 @@
 #ifndef PLAIN_H_
 #define PLAIN_H_
 
-class plain {
+class Plain {
 public:
-    plain(vect &support, vect &directionX, vect &directionBX);
+    Plain(vect &support, vect &directionX, vect &directionBX);
 
-    void loadPlain(frame &plainFrame, uint8_t brightness);
+    void loadPlain(Frame &plainFrame, Color *Colour);
 
     vect *support;
     vect *direction[2]{};
 private:
 
-}; //plain
+}; //Plain
 
 
 #endif /* PLAIN_H_ */

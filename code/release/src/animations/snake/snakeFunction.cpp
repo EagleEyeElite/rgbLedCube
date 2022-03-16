@@ -11,9 +11,9 @@
 #include <stdlib.h> //rand
 
 void snake() {
-    frame FrameA(false);
+    Frame FrameA(false);
     Snake A;
-    clock Watch(100);
+    Clock Watch(100);
 
     for (unsigned int i = 0; i < 300; i++) {    // max led snake will move
 

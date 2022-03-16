@@ -3,12 +3,12 @@
 //
 
 #include "interfaceTest.h"
-#include "../src/interface/clock.h"
-#include "../src/interface/frame.h"
-#include "../src/interface/colour.h"
+#include "../src/interface/Clock.h"
+#include "../src/interface/Frame.h"
+#include "../src/interface/Color.h"
 #include "../src/animations/resources/vector/vect.h"
-#include "../src/animations/resources/vector/straight.h"
-#include "../src/animations/resources/vector/plain.h"
+#include "../src/animations/resources/vector/Straight.h"
+#include "../src/animations/resources/vector/Plain.h"
 
 void testAll() {
     testAddLed();
@@ -21,8 +21,8 @@ void testAll() {
 }
 
 void testAddLed() {
-    clock Watch(3000);
-    frame Frame(true);
+    Clock Watch(3000);
+    Frame Frame(true);
 
     while (Watch.getProgress() <= 1) {
         Frame.resetFrame();
@@ -34,9 +34,9 @@ void testAddLed() {
 }
 
 void testBrightnessTransition() {
-    clock Watch(1000);
-    frame A(true);
-    colour B = colour();
+    Clock Watch(1000);
+    Frame A(true);
+    Color B = Color();
     B.loadHSV(0, 255, 255);
 
     for (int count = 0; count < 2; count++) {
@@ -68,9 +68,9 @@ void testBrightnessTransition() {
 }
 
 void testColour() {
-    clock Watch(3000);
-    frame A(true);
-    colour B = colour();
+    Clock Watch(3000);
+    Frame A(true);
+    Color B = Color();
     float Koo[3] = {2, 2, 2};
 
     while (Watch.getProgress() <= 1) {
@@ -83,8 +83,8 @@ void testColour() {
 }
 
 void testPreset() {
-    clock Watch(1000);
-    frame Preset(false);
+    Clock Watch(1000);
+    Frame Preset(false);
 
     while (Watch.getProgress() <= 1) {
         Preset.resetFrame();
@@ -94,10 +94,10 @@ void testPreset() {
 }
 
 void testBenchmarkSpeed() {
-    frame A(true);
+    Frame A(true);
     A.resetFrame();
     float Koo[3] = {2, 2, 2};
-    colour B = colour();
+    Color B = Color();
     B.loadHSV(0, 255, 255);
 
     for (unsigned int i = 0; i < 80; i++) {
@@ -107,12 +107,12 @@ void testBenchmarkSpeed() {
 
 
 void testStraight() {
-    clock Watch(4000);
-    frame Frame(true);
+    Clock Watch(4000);
+    Frame Frame(true);
 
     vect Support(2, 6, 2);
     vect Direction(0, -1, -1);
-    straight as(Support, Direction);
+    Straight as(Support, Direction);
 
     while (Watch.getProgress() <= 1) {
         Direction.Matrix[2] = ((Watch.getProgress()) * 2) - 1;
@@ -124,17 +124,18 @@ void testStraight() {
 
 
 void testPlain() {
-    clock Watch(4000);
-    frame Frame(true);
+    Clock Watch(4000);
+    Frame Frame(true);
 
     vect Support(2, 6, 2);
     vect Direction1(1, 0, 0);
     vect Direction2(0, -1, -1);
-    plain as(Support, Direction1, Direction2);
+    Plain as(Support, Direction1, Direction2);
+    Color Colour = Color();
 
     while (Watch.getProgress() <= 1) {
         Direction2.Matrix[2] = ((Watch.getProgress()) * 2) - 1;
-        as.loadPlain(Frame, 0xFF);
+        as.loadPlain(Frame, &Colour);
         Frame.showFrame();
         Frame.resetFrame();
     }

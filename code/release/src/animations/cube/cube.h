@@ -17,7 +17,7 @@ class cube {
 public:
     cube(vect &supportA, float sizeA);
 
-    void loadCube(frame &cubeFrame);
+    void loadCube(Frame &cubeFrame);
 
     vect *support;
     float size;

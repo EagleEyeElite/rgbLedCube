@@ -21,7 +21,7 @@ class Snake {
 public:
     Snake();
 
-    void loadSnake(frame &FrameA, float progress);
+    void loadSnake(Frame &FrameA, float progress);
 
     float snakeKoo[10][3]{};
     unsigned int length;

@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.15)
 set(CMAKE_CXX_STANDARD 20)
 
-# Project name
-project(rgbLedCube CXX)
-
 # Use AVR GCC toolchain
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_CXX_COMPILER avr-g++)
 set(CMAKE_C_COMPILER avr-gcc)
 set(CMAKE_ASM_COMPILER avr-gcc)
+
+# Project name
+project(rgbLedCube CXX)
 
 
 ## AVR Chip Configuration

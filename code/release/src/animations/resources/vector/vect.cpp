@@ -18,8 +18,8 @@ vect::vect(float x, float y, float z) {
     Matrix[2] = z;
 }
 
-void vect::loadVector(frame &vectorFrame, uint8_t brightness) {
-    colour B = colour(brightness, brightness, brightness);
+void vect::loadVector(Frame &vectorFrame, uint8_t brightness) {
+    Color B = Color(brightness, brightness, brightness);
     vectorFrame.addLight(Matrix, B.rgb);
 }
 

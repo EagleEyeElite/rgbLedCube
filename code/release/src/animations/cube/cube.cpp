@@ -22,12 +22,12 @@ cube::cube(vect &supportA, float sizeA) {
 
 
 // for just outline, and color changed outline etc.
-void cube::loadCube(frame &cubeFrame) {
+void cube::loadCube(Frame &cubeFrame) {
     cubeFrame.resetFrame();
     float koo[3];
     unsigned int sizeInt = (unsigned int) size + 1;
 
-    colour b = colour();
+    Color b = Color();
 
     auto numLed = (unsigned int) round(pow(sizeInt, 3));
     for (unsigned int i = 0; i < numLed; i++) { // for all led in cube

@@ -15,7 +15,7 @@ class vect {
 public:
     vect(float x, float y, float z);
 
-    void loadVector(frame &vectorFrame, uint8_t brightness);
+    void loadVector(Frame &vectorFrame, uint8_t brightness);
 
     float Matrix[3]{};
 private:

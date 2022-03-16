@@ -1,29 +1,29 @@
 /* 
-* clock.cpp
+* Clock.cpp
 *
 * Created: 30/09/2018 23:33:17
 * Author: Conrad
 */
 
-#include "clock.h"
+#include "Clock.h"
 
 #include "../hardware/hardware.h"
 #include <avr/io.h>
 #include <avr/eeprom.h>
 
 // default constructor
-clock::clock(uint16_t maxMillis) {
+Clock::Clock(uint16_t maxMillis) {
     counterStart = getTimerTick();
     maxTicks = static_cast<uint32_t>(maxMillis * 19.532125);
 }
 
-float clock::getProgress() {
+float Clock::getProgress() {
     return static_cast<float>(getTimerTick() - counterStart) / maxTicks;
 }
 
-void clock::resetTimer() {
+void Clock::resetTimer() {
     counterStart = getTimerTick();
-} //clock
+} //Clock
 
 void delay(uint16_t time) {
     uint32_t counterStart = getTimerTick();

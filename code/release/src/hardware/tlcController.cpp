@@ -79,7 +79,7 @@ void TLCSetup() {
     // defines between interrupts tó update tlc (the less updates = faster code)
     UBRR1 = 95; // 100 is the highest number not breaking
 
-    // GSCLK (OC1A) clock generation: waveform generation mode 4: non PWM, CTC, top OCR1A
+    // GSCLK (OC1A) Clock generation: waveform generation mode 4: non PWM, CTC, top OCR1A
     // toggle 0C0A on compare match, prescaler = 1, 1.25 MHZ, 800nS per GS-bit
     TCCR1A |= 1u << (unsigned) COM1A0;
     TCCR1B |= 1u << (unsigned) WGM12;

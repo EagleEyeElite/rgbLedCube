@@ -1,5 +1,5 @@
 /* 
-* clock.h
+* Clock.h
 *
 * Created: 30/09/2018 23:33:17
 * Author: Conrad
@@ -11,9 +11,9 @@
 #define __CLOCK_H__
 
 
-class clock {
+class Clock {
 public:
-    explicit clock(uint16_t maxMillis);
+    explicit Clock(uint16_t maxMillis);
 
     float getProgress();
 
@@ -24,7 +24,7 @@ private:
     uint32_t counterStart;
     uint32_t maxTicks;
 
-}; //clock
+}; //Clock
 
 void delay(uint16_t time);    // max 65sec
 

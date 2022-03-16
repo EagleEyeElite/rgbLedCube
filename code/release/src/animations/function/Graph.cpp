@@ -2,12 +2,12 @@
 // Created by conrad on 3/19/20.
 //
 
-#include "graph.h"
+#include "Graph.h"
 #include <avr/io.h>
 #include <stdlib.h>
 
 // default constructor
-graph::graph(vect &coordinateOriginal, float (*f)(int8_t, int8_t, float)) {
+Graph::Graph(vect &coordinateOriginal, float (*f)(int8_t, int8_t, float)) {
     fx = f;
 
     Axis[0] = 0;
@@ -19,23 +19,23 @@ graph::graph(vect &coordinateOriginal, float (*f)(int8_t, int8_t, float)) {
 
     coordinate_origin = &coordinateOriginal;
 
-    colours = (colour *) malloc(sizeof(colour));
-    *colours = colour();
+    colours = (Color *) malloc(sizeof(Color));
+    *colours = Color();
     (*colours).loadHSV((unsigned int) (rand() % 360), 255, 255);
 
 } //ThreeDGraph
 
-graph::~graph() {
+Graph::~Graph() {
     free(colours);
 }
 
-void graph::setAxis(uint8_t x, uint8_t y, uint8_t z) {
+void Graph::setAxis(uint8_t x, uint8_t y, uint8_t z) {
     Axis[0] = x;
     Axis[1] = z;
     Axis[2] = y;
 }
 
-void graph::loadGraph(frame &FrameA, float progress) {
+void Graph::loadGraph(Frame &FrameA, float progress) {
     FrameA.resetFrame();
     for (unsigned int x = 1; x < 4; x++) {
         for (unsigned int y = 1; y < 4; y++) {

@@ -15,15 +15,15 @@ void vulcan();
 
 void jumpingWave();
 
-class graph {
+class Graph {
 public:
-    graph(vect &coordinateOriginal, float (*f)(int8_t x, int8_t y, float progress));
+    Graph(vect &coordinateOriginal, float (*f)(int8_t x, int8_t y, float progress));
 
-    ~graph();
+    ~Graph();
 
     void setAxis(uint8_t x, uint8_t y, uint8_t z);  // may be used to switch axis
 
-    void loadGraph(frame &graphFrame, float progress);
+    void loadGraph(Frame &graphFrame, float progress);
 
     vect *coordinate_origin;
     float scale[2]{};
@@ -31,7 +31,7 @@ public:
 
     float (*fx)(int8_t x, int8_t y, float progress); //=z
 private:
-    colour *colours;
+    Color *colours;
 
 };
 

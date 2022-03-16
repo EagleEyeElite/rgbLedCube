@@ -28,9 +28,9 @@ Snake::Snake() {
 
 } //Snake
 
-void Snake::loadSnake(frame &FrameA, float progress) {
+void Snake::loadSnake(Frame &FrameA, float progress) {
     FrameA.resetFrame();
-    colour B = colour();
+    Color B = Color();
     auto taleLength = (unsigned int) (tale * (float) length);
 
     B.loadHSV(hueHead, 255, (uint8_t) (progress * 255));

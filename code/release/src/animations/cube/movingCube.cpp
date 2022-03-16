@@ -10,16 +10,16 @@
 #include <stdlib.h>    //rand
 
 static void
-playAnimationsA(void (*f)(float, frame *, cube *, vect *, const unsigned int *), clock *Watch, frame *panelFrame,
+playAnimationsA(void (*f)(float, Frame *, cube *, vect *, const unsigned int *), Clock *Watch, Frame *panelFrame,
                 cube *CubeA, vect *supportA, unsigned int *startPos);
 
-static void bloatCube(float progress, frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos);
+static void bloatCube(float progress, Frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos);
 
-static void popCube(float progress, frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos);
+static void popCube(float progress, Frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos);
 
 void createCube() {
-    clock Watch(500);
-    frame panelFrame(false);
+    Clock Watch(500);
+    Frame panelFrame(false);
 
     vect supportA(0, 0, 0);
     cube CubeA(supportA, 3);
@@ -43,7 +43,7 @@ void createCube() {
 
 
 static void
-playAnimationsA(void (*f)(float, frame *, cube *, vect *, const unsigned int *), clock *Watch, frame *panelFrame,
+playAnimationsA(void (*f)(float, Frame *, cube *, vect *, const unsigned int *), Clock *Watch, Frame *panelFrame,
                 cube *CubeA, vect *supportA, unsigned int *startPos) {
     while ((*Watch).getProgress() <= 1) {
         (*panelFrame).resetFrame();
@@ -53,7 +53,7 @@ playAnimationsA(void (*f)(float, frame *, cube *, vect *, const unsigned int *),
     (*Watch).resetTimer();
 }
 
-static void bloatCube(float progress, frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos) {
+static void bloatCube(float progress, Frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos) {
     for (uint8_t i = 0; i <= 2; i++) {
         (*CubeA).direction[i] = true;
         if (startPos[i] == 3)
@@ -64,7 +64,7 @@ static void bloatCube(float progress, frame *panelFrame, cube *CubeA, vect *supp
     (*CubeA).loadCube(*panelFrame);
 }
 
-static void popCube(float progress, frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos) {
+static void popCube(float progress, Frame *panelFrame, cube *CubeA, vect *supportA, const unsigned int *startPos) {
     for (uint8_t i = 0; i <= 2; i++) {
         (*CubeA).direction[i] = true;
         if (startPos[i] == 3)

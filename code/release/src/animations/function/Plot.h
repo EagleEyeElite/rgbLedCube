@@ -15,25 +15,25 @@ void infinityFigure();
 void circleFigure();
 
 
-class plot {
+class Plot {
 public:
-    plot(vect &coordinateOriginal, float (*fa)(float x), float (*fb)(float y), float (*fc)(float z));
+    Plot(vect &coordinateOriginal, float (*fa)(float x), float (*fb)(float y), float (*fc)(float z));
 
-    ~plot();
+    ~Plot();
 
     void setAxis(uint8_t x, uint8_t y, uint8_t z);
 
-    void loadPoint(frame &FrameA, float x);
+    void loadPoint(Frame &FrameA, float x);
 
     vect *coordinate_origin;
 
     float (*f[3])(float x){};
 
 private:
-    colour *colours;
+    Color *colours;
     uint8_t Axis[3]{};
 
-}; //plot
+}; //Plot
 
 
 #endif //RGBLEDCUBE_PLOT_H

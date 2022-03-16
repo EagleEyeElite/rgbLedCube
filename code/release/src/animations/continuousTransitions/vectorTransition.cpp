@@ -6,18 +6,18 @@
  */
 
 #include "../resources/vector/vect.h"
-#include "../resources/vector/straight.h"
-#include "../resources/vector/plain.h"
+#include "../resources/vector/Straight.h"
+#include "../resources/vector/Plain.h"
 
 #include <stdlib.h> //rand
 
 void rotatingStraight() {
-    frame straightFrame(true);
-    clock Watch(400);
+    Frame straightFrame(true);
+    Clock Watch(400);
 
     vect support(1, 1, 1);
     vect direction(0, 0, 0);
-    straight as(support, direction);
+    Straight as(support, direction);
 
     unsigned int dir[2];
     dir[0] = (unsigned int) rand() % 3;

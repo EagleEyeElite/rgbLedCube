@@ -1,5 +1,5 @@
 /* 
-* frame.h
+* Frame.h
 *
 * Created: 02.09.2018 19:28:43
 * Author: Conrad
@@ -13,9 +13,9 @@
 
 void getImage(unsigned int imageNr, uint8_t image[81]);
 
-class frame {
+class Frame {
 public:
-    explicit frame(bool smooth);
+    explicit Frame(bool smooth);
 
     bool smooth;    // sets render option for addLight
 
@@ -27,15 +27,15 @@ public:
 
     void addLight(uint8_t ledNr, const uint8_t *rgb);
 
-    void addFrame(frame Frame_to_add);    // adds a frame to current frame
+    void addFrame(Frame Frame_to_add);    // adds a Frame to current Frame
     void resetFrame();
 
-    void showFrame();    // displays frame
-    //~frame();
+    void showFrame();    // displays Frame
+    //~Frame();
 private:
     void writeFrame(const uint8_t koo[3], const uint8_t rgb[3]);
 
-    uint8_t ledFrameColours[81]{}; // 24-bit colour resolution
-}; //frame
+    uint8_t ledFrameColours[81]{}; // 24-bit Color resolution
+}; //Frame
 
 #endif //__FRAME_H__

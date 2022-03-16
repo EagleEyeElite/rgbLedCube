@@ -1,5 +1,5 @@
 /* 
-* drop.h
+* Drop.h
 *
 * Created: 15/10/2018 11:23:54
 * Author: Conrad
@@ -14,11 +14,11 @@
 
 void rain();
 
-class drop {
+class Drop {
 //variables
 public:
     float koo[3] {};
-    colour *rain{};
+    Color *rain{};
 private:
 
     float border;
@@ -27,10 +27,10 @@ private:
 
 //functions
 public:
-    drop();
+    Drop();
 
-    void loadRain(frame &cubeFrame, float progress);
+    void loadRain(Frame &cubeFrame, float progress);
 
-}; //drop
+}; //Drop
 
 #endif //__DROP_H__

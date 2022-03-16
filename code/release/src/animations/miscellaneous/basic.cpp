@@ -8,9 +8,9 @@
 #include "../../interface/interface.h"
 
 void defaultImages() {
-    frame A(false);
+    Frame A(false);
     A.loadImage(2);
-    frame B(false);
+    Frame B(false);
     B.loadImage(1);
     A.addFrame(B);
 
@@ -19,12 +19,12 @@ void defaultImages() {
 }
 
 void glowingCube() {
-    clock Watch(500);
-    frame FrameA(false);
+    Clock Watch(500);
+    Frame FrameA(false);
 
     while (Watch.getProgress() <= 1) {
         FrameA.resetFrame();
-        colour B = colour(0, (uint8_t) (Watch.getProgress() * 0xFF), 0);
+        Color B = Color(0, (uint8_t) (Watch.getProgress() * 0xFF), 0);
         for (uint8_t i = 0; i <= 26; i++) {
             FrameA.addLight(i, B.rgb);
         }
@@ -33,7 +33,7 @@ void glowingCube() {
     Watch.resetTimer();
     while (Watch.getProgress() <= 1) {
         FrameA.resetFrame();
-        colour B = colour(0, (uint8_t) (0xFF - (Watch.getProgress() * 0xFF)), 0);
+        Color B = Color(0, (uint8_t) (0xFF - (Watch.getProgress() * 0xFF)), 0);
         for (uint8_t i = 0; i <= 26; i++) {
             FrameA.addLight(i, B.rgb);
         }
@@ -42,10 +42,10 @@ void glowingCube() {
 }
 
 void runningLed() {
-    clock Watch(1000);
-    frame Frame(true);
+    Clock Watch(1000);
+    Frame Frame(true);
 
-    colour B = colour(200, 180, 100);
+    Color B = Color(200, 180, 100);
     float Koo[3];
     while (Watch.getProgress() <= 1) {
         auto numLed = (unsigned int) (Watch.getProgress() * 28);
@@ -61,19 +61,19 @@ void runningLed() {
 }
 
 void fadingLed() {
-    clock Watch(500);
-    frame FrameA(false);
+    Clock Watch(500);
+    Frame FrameA(false);
 
     float Koo[3] = {2, 2, 2};
     while (Watch.getProgress() <= 1) {
-        colour B = colour((uint8_t) (Watch.getProgress() * 0xFF), 0, 0);
+        Color B = Color((uint8_t) (Watch.getProgress() * 0xFF), 0, 0);
         FrameA.addLight(Koo, B.rgb);
         FrameA.showFrame();
         FrameA.resetFrame();
     }
     Watch.resetTimer();
     while (Watch.getProgress() <= 1) {
-        colour B = colour((uint8_t) (0xFF - (Watch.getProgress() * 0xFF)), 0, 0);
+        Color B = Color((uint8_t) (0xFF - (Watch.getProgress() * 0xFF)), 0, 0);
         FrameA.addLight(Koo, B.rgb);
         FrameA.showFrame();
         FrameA.resetFrame();
@@ -81,11 +81,11 @@ void fadingLed() {
 }
 
 void flashingCube() {
-    clock Watch(500);
-    frame FrameA(false);
+    Clock Watch(500);
+    Frame FrameA(false);
 
     for (unsigned int i = 0; i < 27; i++) {
-        colour B = colour();
+        Color B = Color();
         FrameA.addLight((uint8_t) (i), B.rgb);
     }
     FrameA.showFrame();
@@ -93,7 +93,7 @@ void flashingCube() {
     Watch.resetTimer();
 
     for (unsigned int i = 0; i < 27; i++) {
-        colour B = colour(0, 0, 0);
+        Color B = Color(0, 0, 0);
         FrameA.addLight((uint8_t) i, B.rgb);
     }
     FrameA.showFrame();
@@ -101,9 +101,9 @@ void flashingCube() {
 }
 
 void stackingLayer() {
-    clock Watch(2000);
-    frame FrameA(false);
-    colour B = colour(100, 255, 0);
+    Clock Watch(2000);
+    Frame FrameA(false);
+    Color B = Color(100, 255, 0);
     float Koo[3];
     while (Watch.getProgress() <= 1) {
         auto height = (unsigned int) (Watch.getProgress() * 4) + 1;
@@ -121,12 +121,12 @@ void stackingLayer() {
 }
 
 void redCube() {
-    clock Watch(1000);
-    frame FrameA(false);
+    Clock Watch(1000);
+    Frame FrameA(false);
 
     while (Watch.getProgress() <= 1) {
         for (unsigned int i = 0; i < 27; i++) {
-            colour B = colour(255, 0, 0);
+            Color B = Color(255, 0, 0);
             FrameA.addLight((uint8_t) i, B.rgb);
         }
         FrameA.showFrame();
@@ -135,10 +135,10 @@ void redCube() {
 }
 
 void fadeInFadeOut() {
-    clock Watch(2000);
-    frame FrameOrig(false);
-    frame FrameOne(false);
-    frame FrameTwo(false);
+    Clock Watch(2000);
+    Frame FrameOrig(false);
+    Frame FrameOne(false);
+    Frame FrameTwo(false);
 
     FrameOne.loadImage(1);
     FrameTwo.loadImage(2);
@@ -165,9 +165,9 @@ void fadeInFadeOut() {
 }
 
 void fadePreset() {
-    clock Watch(1000);
-    frame FrameA(false);
-    frame Preset(false);
+    Clock Watch(1000);
+    Frame FrameA(false);
+    Frame Preset(false);
     Preset.loadImage(1);
 
     while (Watch.getProgress() <= 1) {

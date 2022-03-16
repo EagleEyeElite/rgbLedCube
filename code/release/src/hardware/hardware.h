@@ -8,7 +8,7 @@
  * TIMER0: latches and enable layer data upload
  * TIMER1: GSCLK
  * TIMER2: indicator status led PWM
- * TIMER3: global timer / clock
+ * TIMER3: global timer / Clock
  * SPI: code upload
  * USART1: layer data upload
  * INT0: IR-receiver
@@ -42,7 +42,7 @@ ISR (INT2_vect, ISR_NOBLOCK);   // button
 // timer
 void timerSetup();
 
-ISR(TIMER3_OVF_vect, ISR_BLOCK);    // global timer / clock
+ISR(TIMER3_OVF_vect, ISR_BLOCK);    // global timer / Clock
 
 uint32_t getTimerTick();
 

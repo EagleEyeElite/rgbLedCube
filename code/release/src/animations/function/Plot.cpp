@@ -3,11 +3,11 @@
 //
 
 #include <stdlib.h>
-#include "plot.h"
+#include "Plot.h"
 #include "../resources/vector/vect.h"
 
 // default constructor
-plot::plot(vect &coordinateOriginal, float (*fa)(float), float (*fb)(float), float (*fc)(float)) {
+Plot::Plot(vect &coordinateOriginal, float (*fa)(float), float (*fb)(float), float (*fc)(float)) {
     f[0] = fa;
     f[1] = fb;
     f[2] = fc;
@@ -18,22 +18,22 @@ plot::plot(vect &coordinateOriginal, float (*fa)(float), float (*fb)(float), flo
 
     coordinate_origin = &coordinateOriginal;
 
-    colours = (colour *) malloc(sizeof(colour));
-    *colours = colour();
+    colours = (Color *) malloc(sizeof(Color));
+    *colours = Color();
     (*colours).loadHSV((unsigned int) rand() % 360, 255, 255);
 }
 
-plot::~plot() {
+Plot::~Plot() {
     free(colours);
 }
 
-void plot::setAxis(uint8_t x, uint8_t y, uint8_t z) {
+void Plot::setAxis(uint8_t x, uint8_t y, uint8_t z) {
     Axis[0] = x;
     Axis[1] = z;
     Axis[2] = y;
 }
 
-void plot::loadPoint(frame &FrameA, float x) {
+void Plot::loadPoint(Frame &FrameA, float x) {
     FrameA.resetFrame();
 
     float Koo[3];

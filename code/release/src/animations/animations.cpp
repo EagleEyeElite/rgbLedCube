@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include "animations.h"
 #include "cube/cube.h"
-#include "function/graph.h"
-#include "function/plot.h"
+#include "function/Graph.h"
+#include "function/Plot.h"
 
 void runAnimations() {
     void (*p[11])() = {rotatingSinWave, snake, vulcan, createCube, jumpingWave, rain, rotatingStraight, panelAnimation,

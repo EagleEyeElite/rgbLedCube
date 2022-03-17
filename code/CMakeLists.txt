@@ -11,10 +11,6 @@ set(CMAKE_ASM_COMPILER avr-gcc)
 project(rgbLedCube C CXX)
 set(PRODUCT_NAME rgbLedCube)
 
-# select what project you wanna use
-file(GLOB_RECURSE SRC_FILES "release/*.cpp" "release/*.c" "release/*.h")
-#file(GLOB_RECURSE SRC_FILES "pcbDebug/*.cpp" "pcbDebug/*.c" "pcbDebug/*.h")
-#file(GLOB_RECURSE SRC_FILES "pcbTest/*.cpp" "pcbTest/*.c" "pcbTest/*.h")
 
 ## AVR Chip Configuration
 set(F_CPU 2000000UL)
@@ -62,6 +58,7 @@ add_compile_options(
         -fno-tree-scev-cprop
 )
 
+file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.c" "src/*.h")
 # Create one target
 add_executable(${PRODUCT_NAME} ${SRC_FILES})
 

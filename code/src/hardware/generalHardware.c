@@ -61,13 +61,12 @@ static volatile uint32_t previousTicks = 0;
 static volatile uint8_t pulseCount = 0;
 static volatile uint32_t bitPattern = 0;
 
+static volatile bool sleeping = false;
 
 
 static void sleep() {
     // clear display
     tlcStop();
-    setLed(false);
-
     set_sleep_mode(SLEEP_MODE_PWR_DOWN);
     sleep_mode();
 }
@@ -81,7 +80,8 @@ _Noreturn static void reset()  {
 static void irCommands(uint32_t irCode) {
     switch (irCode) {
         case IR_OFF:
-            sleep();
+            sleeping = true;
+            setLed(false);
             break;
         case IR_ON:
             reset();
@@ -90,6 +90,10 @@ static void irCommands(uint32_t irCode) {
             break;
         default:
             break;
+    }
+
+    if(sleeping) {
+        sleep();
     }
 }
 
@@ -137,7 +141,13 @@ ISR (INT2_vect, ISR_NOBLOCK) {
 
     if (int2FallingEdge) {
         // code to be executed
-        sleep();
+        setLed(false);
+        if (sleeping) {
+            reset();
+        } else {
+            sleeping = true;
+            sleep();
+        }
     }
     int2FallingEdge = !int2FallingEdge;
 }

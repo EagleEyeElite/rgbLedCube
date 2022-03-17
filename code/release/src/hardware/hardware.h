@@ -28,7 +28,6 @@
 #define SCLK 4  //PD4
 #define GSCLK 5 //PD5	//OC1A
 #define XLAT 6  //PD6
-#define LED 7   //PD7
 
 #define SW 2    //PB2
 
@@ -41,6 +40,7 @@ ISR (INT2_vect, ISR_NOBLOCK);   // button
 
 // timer
 void timerSetup();
+void stopTimer();
 
 ISR(TIMER3_OVF_vect, ISR_BLOCK);    // global timer / Clock
 
@@ -50,6 +50,7 @@ void resetTimer();
 
 // tlcController
 void TLCSetup();
+void tlcStop();
 
 ISR(USART1_UDRE_vect, ISR_BLOCK);   // layer data upload
 

@@ -8,6 +8,7 @@
 #include "Clock.h"
 
 #include "../hardware/hardware.h"
+#include "../hardware/led.h"
 #include <avr/io.h>
 #include <avr/eeprom.h>
 
@@ -32,7 +33,7 @@ void delay(uint16_t time) {
 }
 
 void benchmark(void (*f)(), uint16_t run_cycles) {
-    PORTD &= ~(1u << (unsigned) LED);    //led -low
+    setLed(false);
     uint32_t counterStart = getTimerTick();
 
     for (uint16_t i = 0; i < run_cycles; i++) {    //take average for better results

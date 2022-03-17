@@ -6,9 +6,11 @@
  */
 
 #include "hardware.h"
+#include "../interface/img_preset.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/delay.h>
 
 // look up table:
 // linear
@@ -95,6 +97,14 @@ void TLCSetup() {
     OCR0A = 64;    // prescaler*OCR0A /20MHZ -> interrupt timing
     TIMSK0 |= 1u << (unsigned) OCIE0A;
     TCCR0B |= 1u << (unsigned) CS00 | 1u << (unsigned) CS02;    // start timer
+}
+
+void tlcStop() {
+    TCCR1B &= ~(1 << CS10);    // stops GSCLK (timer 1)
+    TCCR0B &= ~(1 << CS00 | 1 << CS02);    // stops timer 0
+    UCSR1B &= ~(1 << TXEN1 | 1 << UDRIE1); // disable USART control
+    while(!(UCSR1A & (1<<TXC1))); // wait until USART transmit is complete
+    PORTD &= ~(1u << (unsigned) BLANK); // high (inverted) - turn off TLC output
 }
 
 ISR(USART1_UDRE_vect, ISR_BLOCK) {    // clocks in data

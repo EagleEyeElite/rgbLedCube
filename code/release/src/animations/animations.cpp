@@ -15,13 +15,9 @@ void runAnimations() {
     void (*p[11])() = {rotatingSinWave, snake, vulcan, createCube, jumpingWave, rain, rotatingStraight, panelAnimation,
                        randomVocals, infinityFigure, circleFigure};
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
     while (true) {
-
         p[rand() % 10]();
     }
-#pragma clang diagnostic pop
 }
 
 void basic() {

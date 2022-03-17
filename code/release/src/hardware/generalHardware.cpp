@@ -6,23 +6,37 @@
  */
 
 
+#include <stdlib.h>
 #include <avr/interrupt.h>
 #include <avr/eeprom.h>
 #include <avr/io.h>
-#include <stdlib.h>
+#include <avr/sleep.h>
+#include <avr/wdt.h>
+#include <util/delay.h>
 
 #include "hardware.h"
+#include "irCodes.h"
+#include "led.h"
+
+
+static void WDT_off() {
+    wdt_reset();
+    //Clear WDRF in MCUSR
+    MCUSR &= ~(1<<WDRF);
+    //Write logical one to WDCE and WDE
+    // Keep old prescaler setting to prevent unintentional time-out
+    WDTCSR |= (1<<WDCE) | (1<<WDE);
+    WDTCSR = 0x00;  // Turn off WDT
+}
 
 
 void hardwareSetup() {
     cli();
 
+    WDT_off();
     timerSetup();
     TLCSetup();
-
-    // indicator led, output, high
-    DDRD |= 1u << (unsigned) LED;
-    PORTD |= 1u << (unsigned) LED;
+    initLed();
 
     // IR receiver - INT0 falling edge interrupt
     EICRA |= 1u << (unsigned) ISC01;    // configure INT0 falling edge interrupt
@@ -46,9 +60,42 @@ void hardwareSetup() {
 static volatile uint32_t previousTicks = 0;
 static volatile uint8_t pulseCount = 0;
 static volatile uint32_t bitPattern = 0;
-static volatile uint8_t newKey = 0;
 
 
+
+static void sleep() {
+    // clear display
+    tlcStop();
+    setLed(false);
+
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+    sleep_mode();
+}
+
+[[noreturn]] static void reset() {
+    wdt_enable(WDTO_15MS);
+    while(true);
+}
+
+
+static void irCommands(uint32_t irCode) {
+    switch (irCode) {
+        case IR_OFF:
+            sleep();
+            break;
+        case IR_ON:
+            reset();
+        case IR_W:
+            toggleLed();
+            break;
+        default:
+            break;
+    }
+}
+
+/**
+ * interprets ir input into code
+ */
 ISR(INT0_vect, ISR_NOBLOCK) {
     uint32_t tempTicks = getTimerTick();    // 1 tick = 0.0512ms
     uint32_t counterTicks = tempTicks - previousTicks;
@@ -70,13 +117,8 @@ ISR(INT0_vect, ISR_NOBLOCK) {
         if (counterTicks >= 32)    // logical one are longer than 33 ticks
             bitPattern |= 1u;
         if (pulseCount >= 33) {    // marks end of message
-            newKey = 1;
             pulseCount = 0;
-
-            if (bitPattern == 0xF740BF) {    // IR-transmitter: off
-                PIND |= 1u << (unsigned) LED;    // toggle status led
-            }
-            return;
+            irCommands(bitPattern);
         }
         pulseCount++;
         return;
@@ -95,7 +137,7 @@ ISR (INT2_vect, ISR_NOBLOCK) {
 
     if (int2FallingEdge) {
         // code to be executed
-        PIND |= 1u << (unsigned) LED;    // toggle Status LED
+        sleep();
     }
     int2FallingEdge = !int2FallingEdge;
 }

@@ -19,6 +19,12 @@ void timerSetup() {
     TIMSK3 |= 1u << (unsigned) TOIE3;
 }
 
+void stopTimer() {
+    TIMSK3 &= ~(1 << TOIE3);    // disable interrupt
+    TCCR3B &= ~(1 << CS32 | 1 << CS30); // stop clock
+    t3_soft = 0;
+}
+
 ISR(TIMER3_OVF_vect, ISR_BLOCK) {
     t3_soft += 0xFFFF;
 }

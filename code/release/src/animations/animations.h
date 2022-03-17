@@ -15,7 +15,7 @@
 #include "continuousTransitions/plainTransition.h"
 #include "rain/Drop.h"
 
-void runAnimations() __attribute__((noreturn));
+[[ noreturn ]] void runAnimations() __attribute__((noreturn));
 
 
 #endif /* ANIMATIONS_H_ */

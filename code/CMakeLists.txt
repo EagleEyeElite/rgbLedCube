@@ -8,8 +8,13 @@ set(CMAKE_C_COMPILER avr-gcc)
 set(CMAKE_ASM_COMPILER avr-gcc)
 
 # Project name
-project(rgbLedCube CXX)
+project(rgbLedCube C CXX)
+set(PRODUCT_NAME rgbLedCube)
 
+# select what project you wanna use
+file(GLOB_RECURSE SRC_FILES "release/*.cpp" "release/*.c" "release/*.h")
+#file(GLOB_RECURSE SRC_FILES "pcbDebug/*.cpp" "pcbDebug/*.c" "pcbDebug/*.h")
+#file(GLOB_RECURSE SRC_FILES "pcbTest/*.cpp" "pcbTest/*.c" "pcbTest/*.h")
 
 ## AVR Chip Configuration
 set(F_CPU 2000000UL)
@@ -18,6 +23,13 @@ set(MCU atmega1284p)
 # Default Baudrate for UART, read avr include/util/setbaud.h for usage
 set(BAUD 9600)
 set(USB_Port /dev/ttyACM0)
+
+# AVR Fuses, configured for hardware
+# http://eleccelerator.com/fusecalc/fusecalc.php?chip=atmega1284p
+set(L_FUSE 0xff)
+set(H_FUSE 0xd9)
+set(E_FUSE 0xfc)
+set(LOCK_BIT 0xff)
 
 # Pass defines to compiler
 add_definitions(
@@ -29,7 +41,8 @@ set(CMAKE_EXE_LINKER_FLAGS -mmcu=${MCU})
 
 add_compile_options(
         -mmcu=${MCU} # MCU
-        -std=c++17
+        -std=c18
+        -std=c++20
         -Os # optimize
         -Wall # enable warnings
         -Wno-main
@@ -49,27 +62,13 @@ add_compile_options(
         -fno-tree-scev-cprop
 )
 
-# AVR Fuses, configured for hardware
-# http://eleccelerator.com/fusecalc/fusecalc.php?chip=atmega328p
-set(E_FUSE 0xfc)
-set(H_FUSE 0xd9)
-set(L_FUSE 0xff)
-set(LOCK_BIT 0xff)
-
-# add_subdirectory(pcbTest)
-# add_subdirectory(pcbDebug)
-# add_subdirectory(release)
-
-set(PRODUCT_NAME rgbLedCube)
-file(GLOB_RECURSE SRC_FILES "release/*.cpp" "release/*.h") # Load all files in src folder
-
 # Create one target
 add_executable(${PRODUCT_NAME} ${SRC_FILES})
 
 # Rename the output to .elf as we will create multiple files
 set_target_properties(${PRODUCT_NAME} PROPERTIES OUTPUT_NAME output.elf DEPENDS ${PRODUCT_NAME})
 
-add_custom_target(strip ALL avr-strip output.elf DEPENDS rgbLedCube)
+add_custom_target(strip ALL avr-strip output.elf DEPENDS ${PRODUCT_NAME})
 
 # Transform binary into hex file, we ignore the eeprom segments in the step
 add_custom_target(hex ALL avr-objcopy -R .eeprom -O ihex output.elf output.hex DEPENDS strip)

@@ -11,29 +11,16 @@
 #include <avr/eeprom.h>
 #include <avr/io.h>
 #include <avr/sleep.h>
-#include <avr/wdt.h>
 #include <util/delay.h>
 
 #include "hardware.h"
 #include "irCodes.h"
 #include "led.h"
-
-
-static void WDT_off() {
-    wdt_reset();
-    //Clear WDRF in MCUSR
-    MCUSR &= ~(1<<WDRF);
-    //Write logical one to WDCE and WDE
-    // Keep old prescaler setting to prevent unintentional time-out
-    WDTCSR |= (1<<WDCE) | (1<<WDE);
-    WDTCSR = 0x00;  // Turn off WDT
-}
-
+#include "entry.h"
 
 void hardwareSetup() {
     cli();
 
-    WDT_off();
     timerSetup();
     TLCSetup();
     initLed();
@@ -72,7 +59,8 @@ static void sleep() {
 }
 
 _Noreturn static void reset()  {
-    wdt_enable(WDTO_15MS);
+    // TODO add own reset
+    function0();
     while(true);
 }
 
@@ -141,13 +129,7 @@ ISR (INT2_vect, ISR_NOBLOCK) {
 
     if (int2FallingEdge) {
         // code to be executed
-        setLed(false);
-        if (sleeping) {
-            reset();
-        } else {
-            sleeping = true;
-            sleep();
-        }
+        reset();
     }
     int2FallingEdge = !int2FallingEdge;
 }

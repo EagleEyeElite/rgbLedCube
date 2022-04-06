@@ -8,7 +8,7 @@ set(CMAKE_C_COMPILER avr-gcc)
 set(CMAKE_ASM_COMPILER avr-gcc)
 
 # Project name
-project(rgbLedCube C CXX)
+project(rgbLedCube ASM C CXX)
 set(PRODUCT_NAME rgbLedCube)
 
 
@@ -37,8 +37,6 @@ set(CMAKE_EXE_LINKER_FLAGS -mmcu=${MCU})
 
 add_compile_options(
         -mmcu=${MCU} # MCU
-        -std=c18
-        -std=c++20
         -Os # optimize
         -Wall # enable warnings
         -Wno-main
@@ -57,8 +55,10 @@ add_compile_options(
         -fno-split-wide-types
         -fno-tree-scev-cprop
 )
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c18")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 
-file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.c" "src/*.h")
+file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.c" "src/*.h" "src/*.s")
 # Create one target
 add_executable(${PRODUCT_NAME} ${SRC_FILES})
 

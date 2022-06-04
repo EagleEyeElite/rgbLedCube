@@ -42,5 +42,5 @@ void benchmark(void (*f)(), uint16_t run_cycles) {
     uint32_t ticks_needed = getTimerTick() - counterStart;
     eeprom_update_dword((uint32_t *) nullptr, ticks_needed);
 
-    PORTD |= (1u << (unsigned) LED);    //led -high, Indicates end of benchmark
+    setLed(true);   //led -high, Indicates end of benchmark
 }

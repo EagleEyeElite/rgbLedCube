@@ -24,15 +24,15 @@ extern "C" {
 #include <avr/interrupt.h>
 
 
-#define BLANK 0 //PD0
-#define VPRG 1  //PD1
+#define BLANK 0 //PD0 - when low, it's high on the pcb and disables the tlc output
+#define VPRG 1  //PD1 - sets grayscale / dot correction (dc) mode
 #define IR_Rec 2    //PD2
-#define SIN 3   //PD3
-#define SCLK 4  //PD4
-#define GSCLK 5 //PD5	//OC1A
-#define XLAT 6  //PD6
+#define SIN 3   //PD3 - serial in
+#define SCLK 4  //PD4 - serial clock
+#define GSCLK 5 //PD5	//OC1A - grayscale clock
+#define XLAT 6  //PD6 - latches serial data into registers
 
-#define SW 2    //PB2
+#define SW 2    //PB2 - switch
 
 
 // generalHardware

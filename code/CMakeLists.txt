@@ -41,7 +41,7 @@ add_compile_options(
         -Wall # enable warnings
         -Wno-main
         -Wundef
-        -pedantic
+        -Wno-attributes
         -Wfatal-errors
         -Wl,--relax,--gc-sections
         -g

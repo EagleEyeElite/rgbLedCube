@@ -16,7 +16,9 @@
 #include "hardware.h"
 #include "irCodes.h"
 #include "led.h"
-#include "entry.h"
+#include "reset.h"
+
+_Noreturn static void reset();
 
 void hardwareSetup() {
     cli();
@@ -59,9 +61,8 @@ static void sleep() {
 }
 
 _Noreturn static void reset()  {
-    // TODO add own reset
-    function0();
-    while(true);
+    tlcStop();
+    jumpToStart();
 }
 
 

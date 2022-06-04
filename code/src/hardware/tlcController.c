@@ -14,7 +14,7 @@
 
 // look up table:
 // linear
-static volatile const uint16_t lightness[0x100] =
+static const uint16_t lightness[0x100] =
         {0x000, 0x010, 0x020, 0x030, 0x040, 0x050, 0x060, 0x070, 0x080, 0x091, 0x0a1, 0x0b1, 0x0c1, 0x0d1, 0x0e1, 0x0f1,
          0x101, 0x111, 0x121, 0x131, 0x141, 0x151, 0x161, 0x171, 0x181, 0x191, 0x1a2, 0x1b2, 0x1c2, 0x1d2, 0x1e2, 0x1f2,
          0x202, 0x212, 0x222, 0x232, 0x242, 0x252, 0x262, 0x272, 0x282, 0x292, 0x2a2, 0x2b3, 0x2c3, 0x2d3, 0x2e3, 0x2f3,
@@ -44,33 +44,32 @@ void TLCSetup() {
     PORTC = 0b00000111;    // mosfet - low (inverted)
     DDRC = 0b00000111;    // mosfet - output
 
-    DDRD |= 1u << (unsigned) BLANK | 1u << (unsigned) VPRG | 1u << (unsigned) SIN | 1u << (unsigned) SCLK |
-            1u << (unsigned) GSCLK | 1u << (unsigned) XLAT;    // define as output
-    PORTD &= ~(1u << (unsigned) BLANK); // high (inverted) - turn off TLC output
+    PORTD = 0;  // turn off whole tlc, blank is via the pcb inverted, and high on the chip
+    DDRD |= 1 << BLANK | 1 << VPRG | 1 << SIN | 1 << SCLK | 1 << GSCLK | 1 << XLAT;    // define as output
 
-    PORTD |= 1u << (unsigned) VPRG;     // DC data input mode
-    PORTD |= 1u << (unsigned) SIN;
-    PORTD  &= ~(1u << (unsigned) SCLK); // make sure its low
+    PORTD |= 1 << VPRG; // DC data input mode
+    PORTD |= 1 << SIN;
+    PORTD &= ~(1 << SCLK); // make sure its low
     for (int i = 0; i < 162; i++) {     // 6 bits * 27 channels = 162
-        PIND = 1u << (unsigned) SCLK;
-        PIND = 1u << (unsigned) SCLK;    // low
+        PORTD |= 1 << SCLK;
+        PORTD &= ~(1 << SCLK);
     }
-    PIND = 1u << (unsigned) XLAT;
-    PIND = 1u << (unsigned) XLAT;
+    PORTD |= 1 << XLAT;
+    PORTD &= ~(1 << XLAT);
 
-    PORTD &= ~(1u << (unsigned) VPRG);  // GS data input mode
-    PORTD &= ~(1u << (unsigned) SIN);   // clear all old data
+    PORTD &= ~(1 << VPRG);  // GS data input mode
+    PORTD |= 1 << SIN;   // clear all old data
 
     for (int i = 0; i < 324; i++) {     // 12bits * 27 channels = 324
-        PIND = 1u << (unsigned) SCLK;
-        PIND = 1u << (unsigned) SCLK;   // low
+        PORTD |= 1 << SCLK;
+        PORTD &= ~(1 << SCLK);
     }
-    PIND = 1u << (unsigned) XLAT;
-    PIND = 1u << (unsigned) XLAT;   // low
+    PORTD |= 1 << XLAT;
+    PORTD &= ~(1 << XLAT);
 
-    PORTD  &= ~(1u << (unsigned) XLAT); // make sure they are low
-    PORTD  &= ~(1u << (unsigned) SCLK);
-    PORTD |= (1u << (unsigned) BLANK);  // low (inverted) - enable TLC output
+    PORTD  &= ~(1 << XLAT); // make sure they are low
+    PORTD  &= ~(1 << SCLK);
+    PORTD |= (1 << BLANK);  // low (inverted) - enable TLC output
 
     // MSPIM mode: starts USART as SPI: MSPI: SPI-mode 0, MSB, baud rate: 0
     // transmitter enable, USART data register empty interrupt enable
@@ -78,8 +77,7 @@ void TLCSetup() {
     DDRD |= 1u << (unsigned) SCLK;
     UCSR1C = 1u << (unsigned) UMSEL10 | 1u << (unsigned) UMSEL11;
     UCSR1B |= 1u << (unsigned) TXEN1 | 1u << (unsigned) UDRIE1;
-    // defines between interrupts tó update tlc (the less updates = faster code)
-    UBRR1 = 95; // 100 is the highest number not breaking
+    UBRR1 = 0; // highest baud rate available
 
     // GSCLK (OC1A) Clock generation: waveform generation mode 4: non PWM, CTC, top OCR1A
     // toggle 0C0A on compare match, prescaler = 1, 1.25 MHZ, 800nS per GS-bit
@@ -100,33 +98,49 @@ void TLCSetup() {
 }
 
 void tlcStop() {
-    TCCR1B &= ~(1 << CS10);    // stops GSCLK (timer 1)
-    TCCR0B &= ~(1 << CS00 | 1 << CS02);    // stops timer 0
-    UCSR1B &= ~(1 << TXEN1 | 1 << UDRIE1); // disable USART control
-    while(!(UCSR1A & (1<<TXC1))); // wait until USART transmit is complete
-    PORTD &= ~(1u << (unsigned) BLANK); // high (inverted) - turn off TLC output
+    // if usart as spi transmitter enabled
+    if (UCSR1B & (1<<TXEN1)) {
+        UCSR1B = 0; // disable usart transmitter port overwrite and interrupts
+        UCSR1C = 0; // disable MSPI mode
+        while (!(UCSR1A & (1 << TXC1))); // wait until current transmission is complete
+    }
+
+    TCCR0B &= ~(1 << CS00 | 1 << CS02); // stops timer 0
+    TIFR0 |= 1<<OCF0A;  // clear Timer0 Output Compare A Match Flag
+    TCCR1A = 0;
+    TCCR1A &= ~(1 << COM1A0);   // lets us control GSCKL, disconnected from Timer 1
+    TCCR1B &= ~(1 << CS10); // stops timer 1
+
+    PORTD = 0;  // turn off whole tlc, blank is via the pcb inverted, and high on the chip
 }
 
 ISR(USART1_UDRE_vect, ISR_BLOCK) {    // clocks in data
-    if (++shiftOutNr < 41)    // sendLength = 41, (27*12 bits -> 40.5 * 8bits)
-        UDR1 = shiftOutInstruction[currentLayer][shiftOutNr];
+    UCSR1A |= 1 << TXC1; // clear USART Transmit Complete
+    UDR1 = shiftOutInstruction[currentLayer][shiftOutNr++];
+
+    if (shiftOutNr > 40) { // sendLength = 41, (27*12 bits -> 40.5 * 8bits)
+        // this is the last data needed
+        shiftOutNr = 1;
+        UCSR1B &= ~(1 << UDRIE1); // disable further empty buffer interrupts
+    }
 }
 
 ISR(TIMER0_COMPA_vect, ISR_BLOCK) {    // controls MSPIM upload and cube image
-    PIND = 1u << (unsigned) BLANK;    // high (inverted) - resets TLC counter (4096)
-    while (!((unsigned) UCSR1A & (1u << (unsigned) TXC1)));    // waits until transmit complete bit is set
-    PIND = 1u << (unsigned) XLAT;    // latches new Data
-    PIND = 1u << (unsigned) XLAT;
+    TCNT0 = 0;    // resets Counter
+    PIND = 1 << BLANK;    // high (inverted) - resets TLC counter (4096)
+    PIND = 1 << XLAT;    // latches new Data
+    PIND = 1 << XLAT;
     PORTC = (uint8_t) (~(0b001u << currentLayer));    // layer mosfet
     // blank goes low to start the next cycle, TLC will start to recount
     // make sure there is a 1µS delay before switching it again! (PCB board inverter)
-    PIND = 1u << (unsigned) BLANK; // low (inverted)
-    TCNT0 = 0;    // resets Counter
+    PIND = 1 << BLANK; // low (inverted)
 
-    shiftOutNr = 0;
     if (++currentLayer >= 3)
         currentLayer = 0;
-    UDR1 = shiftOutInstruction[currentLayer][shiftOutNr];    // upload shiftOutBuffer[]
+
+    UCSR1A |= 1 << TXC1; // clear USART Transmit Complete
+    UCSR1B |= 1 << UDRIE1; // enable emtpy transmit buffer interrupt
+    UDR1 = shiftOutInstruction[currentLayer][0];    // upload shiftOutBuffer[]
 }
 
 void updateDisplay(const uint8_t image[81]) {

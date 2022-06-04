@@ -20,6 +20,10 @@
 
 _Noreturn static void reset();
 
+static volatile uint8_t __attribute__((section (".noinit"))) software_seed;
+static volatile bool softwareReset __attribute__((section (".noinit")));
+
+
 void hardwareSetup() {
     cli();
 
@@ -38,9 +42,16 @@ void hardwareSetup() {
     EIMSK |= 1u << (unsigned) INT2;
 
     // random setup
-    uint8_t number = eeprom_read_byte((uint8_t *) 4);
-    srand(number++);
-    eeprom_write_byte((uint8_t *) 4, number);
+    if(softwareReset) {
+        software_seed++;
+    } else {
+        software_seed = 0;
+    }
+    softwareReset = false;
+
+    //uint8_t number = eeprom_read_byte((uint8_t *) 4);
+    srand(software_seed);
+    //eeprom_write_byte((uint8_t *) 4, number);
 
     sei();    // enable interrupt globally
 }
@@ -62,6 +73,7 @@ static void sleep() {
 
 _Noreturn static void reset()  {
     tlcStop();
+    softwareReset = true;
     jumpToStart();
 }
 

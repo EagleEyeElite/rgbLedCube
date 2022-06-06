@@ -5,13 +5,12 @@
  * Author : Conrad
  */
 
-
 #include "hardware/hardware.h"
 #include "animations/animations.h"
 #include "test/interfaceTest.h"
 
 int main() {
-    hardwareSetup();
+    initHardware();
 
     // benchmark(testBenchmarkSpeed, 1);
     // testAll();

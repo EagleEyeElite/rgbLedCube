@@ -6,7 +6,7 @@
 */
 
 #include <avr/io.h>
-#include "../hardware/fast_hsv2rgb.h"
+#include "../lib/fast_hsv2rgb.h"
 
 #ifndef __COLOUR_H__
 #define __COLOUR_H__

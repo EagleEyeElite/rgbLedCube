@@ -1,13 +1,16 @@
 #ifndef RGBLEDCUBE_RESET_H
 #define RGBLEDCUBE_RESET_H
+
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
-_Noreturn void jumpToStart();
-
-
+void initResetState();
+bool resetBySoftware();
+_Noreturn void reset();
 
 #ifdef __cplusplus
 }

@@ -5,31 +5,41 @@
  *  Author: Conrad
  */
 
-#include "hardware.h"
+#include "timer3.h"
+
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
-static volatile uint32_t t3_soft;    //timer3 software
+static uint32_t t3_soft;    //timer3 software
 
-// normal counter operation, 1024 prescaler, 51,2µs / 0,051ms resolution (1 tick = 51,2µs / 0,051ms)
-// overflows after ~3,3 seconds
-void timerSetup() {
+/**
+ * Initialize timer for global clock.
+ */
+void startGlobalTime() {
+    // normal counter operation, 1024 prescaler, 51,2µs / 0,051ms resolution (1 tick = 51,2µs / 0,051ms)
+    // overflows after ~3,3 seconds
     t3_soft = 0;
     TCCR3B = 1u << (unsigned) CS32 | 1u << (unsigned) CS30;
     TIMSK3 |= 1u << (unsigned) TOIE3;
 }
 
-void stopTimer() {
+void stopGlobalTime() {
     TIMSK3 &= ~(1 << TOIE3);    // disable interrupt
     TCCR3B &= ~(1 << CS32 | 1 << CS30); // stop clock
     t3_soft = 0;
 }
 
+/**
+ * On Timer overflow, update the timer3 software timer to keep track of time.
+ */
 ISR(TIMER3_OVF_vect, ISR_BLOCK) {
     t3_soft += 0xFFFF;
 }
 
-uint32_t getTimerTick() {
+/**
+ * @return global time ticks since reset.
+ */
+uint32_t getGlobalTick() {
     TIMSK3 &= ~(1u << (unsigned) TOIE3);    // disable interrupt
     uint32_t val = t3_soft + TCNT3;
     uint8_t tifr = TIFR3;
@@ -39,7 +49,7 @@ uint32_t getTimerTick() {
     return val;
 }
 
-void resetTimer() {
+void resetGlobalTime() {
     TCNT3 = 0;
     t3_soft = 0;
 }

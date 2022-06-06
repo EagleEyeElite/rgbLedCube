@@ -1,13 +1,12 @@
 #ifndef RGBLEDCUBE_LED_H
 #define RGBLEDCUBE_LED_H
+
+#include <stdbool.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include <stdbool.h>
-
-
-#define LED 7   //PD7
 
 void initLed();
 void setLed(bool on);

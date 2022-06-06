@@ -7,9 +7,8 @@
 
 #include "Frame.h"
 #include "img_preset.h"
-#include "../hardware/hardware.h"
+#include "../hardware/display.h"
 
-#include <avr/io.h>
 #include <math.h>
 #include <avr/pgmspace.h>
 

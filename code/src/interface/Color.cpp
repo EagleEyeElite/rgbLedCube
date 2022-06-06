@@ -7,7 +7,7 @@
 
 
 #include "Color.h"
-#include "../hardware/fast_hsv2rgb.h"
+#include "../lib/fast_hsv2rgb.h"
 
 
 // default constructor

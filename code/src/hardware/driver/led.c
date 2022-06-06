@@ -3,12 +3,16 @@
 //
 
 #include "led.h"
+#include "../pinLayout.h"
 #include <avr/io.h>
 
 #include <stdbool.h>
 
+/**
+ * initialize debug led on pcb.
+ */
 void initLed() {
-    DDRD |= 1u << (unsigned) LED;
+    DDRD |= 1 << LED;
     setLed(false);
 }
 void setLed(bool on) {
@@ -19,5 +23,5 @@ void setLed(bool on) {
 }
 
 void toggleLed() {
-    PIND |= 1u << (unsigned) LED;    // toggle Status LED
+    PIND |= 1 << LED;    // toggle Status LED
 }

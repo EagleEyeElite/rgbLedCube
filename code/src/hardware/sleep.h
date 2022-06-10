@@ -10,7 +10,6 @@
 extern "C" {
 #endif
 
-void setSleepingState(bool sleeping);
 bool sleeping();
 void sleep();
 

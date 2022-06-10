@@ -7,7 +7,6 @@
 #include "tlc5940.h"
 
 #include <avr/io.h>
-#include <stdint-gcc.h>
 
 static const rawLayerData *rawDisplayData;
 
@@ -15,7 +14,6 @@ static const rawLayerData *rawDisplayData;
  * Overrides serial clock (SCLK) snd Serial in (Sin) pins.
  * Initialize USART for data transfer.
  *
- * @param currentLayerPointer
  * @param rawDisplayDataPointer
  */
 void initDisplayDataTransmitter(rawLayerData rawDisplayDataPointer[3]) {

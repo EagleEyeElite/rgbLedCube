@@ -21,18 +21,22 @@ void initButton() {
 }
 
 
-static uint32_t int2Ticks = 0;
+static uint32_t lastTicks = 0;
 static bool buttonPressed = false;
+
 /**
  * handles button presses
  */
 ISR(INT2_vect, ISR_NOBLOCK) {
-    uint32_t tempTicks = getGlobalTick();    // 1 tick = 0.0512ms
-    if (tempTicks <= int2Ticks) {   // check for debounce
+    uint32_t ticks = getGlobalTick();   // 1 tick = 0.0512ms
+    if (ticks <= lastTicks + 500) {     // 25.5 ms - max debounce time
         return;
     }
-    int2Ticks = tempTicks + 500;  // 25.5 ms - max debounce time
     buttonPressed = !buttonPressed;
+    if (ticks >= lastTicks + 10000) {   // 0.5s - pressed wrongly
+        buttonPressed = true;
+    }
+    lastTicks = ticks;
     if (!buttonPressed) {
         return;
     }

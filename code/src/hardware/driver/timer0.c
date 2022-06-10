@@ -25,7 +25,7 @@ void stopLayerSwitching() {
     TIFR0 |= 1<<OCF0A;  // clear Timer0 Output Compare A Match Flag
 }
 
-static uint8_t currentLayer;
+static uint8_t currentLayer = 0;
 
 /**
  * The interrupt handles the display layer switching.

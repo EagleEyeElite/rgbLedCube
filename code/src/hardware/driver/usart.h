@@ -14,9 +14,9 @@
 extern "C" {
 #endif
 
-void initDisplayDataTransmitter(const uint8_t *currentLayerPointer, unsigned char rawDisplayDataPointer[3][41]);
+void initDisplayDataTransmitter(rawLayerData rawDisplayDataPointer[3]);
 void disableDisplayDataTransmitter();
-void startTransmission(uint8_t data);
+void startTransmission(uint8_t layer);
 
 #ifdef __cplusplus
 }

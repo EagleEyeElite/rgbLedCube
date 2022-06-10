@@ -22,14 +22,14 @@ void initTlc5940() {
 
     PORTD |= 1 << VPRG; // Dot Correction (DC) data input mode
     PORTD |= 1 << SIN;  // all channels should operate at 100%.
-    for (int i = 0; i < 162; i++) {     // 6 bits * 27 channels = 162
+    for (unsigned int i = 0; i < 162; i++) {     // 6 bits * 27 channels = 162
         pulse(SCLK);
     }
     pulse(XLAT);    // latch DC data
 
     PORTD &= ~(1 << VPRG);  // Grayscale (GS) data input mode
-    PORTD |= 1 << SIN;   // clear all old data
-    for (int i = 0; i < 324; i++) {     // 12bits * 27 channels = 324
+    PORTD &= ~(1 << SIN);   // clear all old data
+    for (unsigned int i = 0; i < 324; i++) {     // 12bits * 27 channels = 324
         pulse(SCLK);
     }
     pulse(XLAT); // latch GS data

@@ -6,21 +6,12 @@
 
 #include "../pinLayout.h"
 #include "layerMosfets.h"
-#include "tlc5940.h"
 #include "usart.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <stdint-gcc.h>
 
 
-static uint8_t *currentLayer;
-static const rawLayerData *rawDisplayData;
-
-
-void startLayerSwitching(uint8_t *currentLayerPointer, uint8_t rawDisplayDataPointer[3][41]) {
-    currentLayer = currentLayerPointer;
-    rawDisplayData = rawDisplayDataPointer;
-
+void startLayerSwitching() {
     // control MSPIM - timer 0 interrupts: CTC mode, timer 0 interrupt on OCR2A, 1024 prescaler
     // interrupt after 3.2768ms, 101.7 hz refresh rate
     TCCR0A |= 1 << WGM01;
@@ -34,6 +25,8 @@ void stopLayerSwitching() {
     TIFR0 |= 1<<OCF0A;  // clear Timer0 Output Compare A Match Flag
 }
 
+static uint8_t currentLayer;
+
 /**
  * The interrupt handles the display layer switching.
  * Preloaded data of the current layer is latched into the Led Driver and
@@ -41,19 +34,17 @@ void stopLayerSwitching() {
  * It also triggers the loading of the led driver with next layer data.
  */
 ISR(TIMER0_COMPA_vect, ISR_BLOCK) {    // controls MSPIM upload and cube image
-    uint8_t layer = *currentLayer;
     TCNT0 = 0;    // resets Counter
     PIND = 1 << BLANK;    // high (inverted) - resets TLC counter (4096)
     PIND = 1 << XLAT;    // latches new Data
     PIND = 1 << XLAT;
-    setMosfets(layer++);
+    setMosfets(currentLayer++);
     // blank goes low to start the next cycle, TLC will start to recount
     // make sure there is a 1µS delay before switching it again! (PCB board inverter)
     PIND = 1 << BLANK; // low (inverted)
 
-    if (layer >= 3) {
-        layer = 0;
+    if (currentLayer > 2) {
+        currentLayer = 0;
     }
-    startTransmission(rawDisplayData[layer][0]);
-    *currentLayer = layer;
+    startTransmission(currentLayer);
 }

@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-void startLayerSwitching(uint8_t *currentLayerPointer, uint8_t rawDisplayDataPointer[3][41]);
+void startLayerSwitching();
 void stopLayerSwitching();
 
 #ifdef __cplusplus

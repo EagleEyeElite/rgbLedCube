@@ -5,7 +5,6 @@
  *  Author: Conrad
  */
 
-#include "../interface/img_preset.h"
 #include "driver/layerMosfets.h"
 #include "driver/usart.h"
 #include "driver/timer1.h"
@@ -15,14 +14,13 @@
 
 
 static rawLayerData rawDisplayData[3];
-static uint8_t currentLayer = 0;
 
 void startDisplay() {
     initDisplayLayerMosfets();
     initTlc5940();
-    initDisplayDataTransmitter(&currentLayer, rawDisplayData);
+    initDisplayDataTransmitter(rawDisplayData);
     startGSCLK();
-    startLayerSwitching(&currentLayer, rawDisplayData);
+    startLayerSwitching();
 }
 
 void disableDisplay() {
@@ -54,7 +52,7 @@ static const uint16_t lightness[0x100] =
          0xf0e, 0xf1e, 0xf2e, 0xf3e, 0xf4e, 0xf5e, 0xf6e, 0xf7f, 0xf8f, 0xf9f, 0xfaf, 0xfbf, 0xfcf, 0xfdf, 0xfef,
          0xfff};
 
-void updateDisplay(const uint8_t image[81]) {
+void updateDisplay(const imageData image) {
     // converts 12 bit data into 8-bit data frames (MSPIM), MSB and channel first!
     for (unsigned int l = 0; l < 3; l++) {    // l for Layer
         // first 12bit data needs to be done separately, bc 27 is an odd number

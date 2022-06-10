@@ -6,11 +6,10 @@
 */
 
 #include <avr/io.h>
+#include "../hardware/display.h"
 
 #pragma once
 
-
-void getImage(unsigned int imageNr, uint8_t image[81]);
 
 class Frame {
 public:
@@ -34,5 +33,5 @@ public:
 private:
     void writeFrame(const uint8_t koo[3], const uint8_t rgb[3]);
 
-    uint8_t ledFrameColours[81]{}; // 24-bit Color resolution
+    imageData ledFrameColours; // 24-bit Color resolution
 }; //Frame

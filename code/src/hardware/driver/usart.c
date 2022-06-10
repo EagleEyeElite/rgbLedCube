@@ -9,7 +9,6 @@
 #include <avr/io.h>
 #include <stdint-gcc.h>
 
-static const uint8_t *currentLayer;
 static const rawLayerData *rawDisplayData;
 
 /**
@@ -19,8 +18,7 @@ static const rawLayerData *rawDisplayData;
  * @param currentLayerPointer
  * @param rawDisplayDataPointer
  */
-void initDisplayDataTransmitter(const uint8_t *currentLayerPointer, uint8_t rawDisplayDataPointer[3][41]) {
-    currentLayer = currentLayerPointer;
+void initDisplayDataTransmitter(rawLayerData rawDisplayDataPointer[3]) {
     rawDisplayData = rawDisplayDataPointer;
 
     // Master SPI Mode (MSPIM): starts USART as SPI: SPI-mode 0, MSB, baud rate: 0
@@ -49,24 +47,27 @@ static inline void writeTransmitBuffer(uint8_t data) {
     UDR1 = data;    // upload shiftOutBuffer[]
 }
 
+static uint8_t currentLayer;
+static uint8_t byteNr;
+
 /**
  * Start the transmission of a new layer package for the led Driver.
  * @param data first byte of layer package
  */
-inline void startTransmission(uint8_t data) {
-    writeTransmitBuffer(data);
+inline void startTransmission(uint8_t layer) {
+    writeTransmitBuffer(rawDisplayData[layer][0]);
+    currentLayer = layer;
+    byteNr = 1;
     UCSR1B |= 1 << UDRIE1; // enable emtpy transmit buffer interrupt
 }
 
 /**
  * The interrupt fills the USART Buffer until the whole layer package is written to the LED Driver.
  */
-static uint8_t shiftOutNr = 0;
 ISR(USART1_UDRE_vect, ISR_BLOCK) {    // clocks in data
-    writeTransmitBuffer(rawDisplayData[*currentLayer][shiftOutNr++]);
-    if (shiftOutNr > 40) { // sendLength = 41, (27*12 bits -> 40.5 * 8bits)
+    writeTransmitBuffer(rawDisplayData[currentLayer][byteNr++]);
+    if (byteNr > 40) { // sendLength = 41, (27*12 bits -> 40.5 * 8bits)
         // this is the last data needed
-        shiftOutNr = 1;
         UCSR1B &= ~(1 << UDRIE1); // disable further empty buffer interrupts
     }
 }

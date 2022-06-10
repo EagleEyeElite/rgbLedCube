@@ -7,7 +7,6 @@
 
 #include "Frame.h"
 #include "img_preset.h"
-#include "../hardware/display.h"
 
 #include <math.h>
 #include <avr/pgmspace.h>
@@ -22,7 +21,7 @@ Frame::Frame(bool s) {
 
 // public
 void Frame::loadImage(unsigned int imageNr) {
-    for (int i = 0; i <= 80; i++)
+    for (int i = 0; i < 81; i++)
         ledFrameColours[i] = pgm_read_byte(image_Preset[imageNr] + i);
 }
 

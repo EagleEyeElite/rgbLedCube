@@ -7,10 +7,11 @@
 
 #include <avr/pgmspace.h>
 #include <avr/io.h>
+#include "../hardware/display.h"
 
 #pragma once
 
-const PROGMEM uint8_t image_Preset[][81] = {
+const PROGMEM imageData image_Preset[] = {
         //Image 0 - empty image
         {   //	L1 r, L1 g,	L1 b, L2 r, L2 g, L2 b,	L3 r, L3 g, L3 b, L4 r, L4 g, L4 b,	L5 r, L5 g, L5 b, L6 r, L6 g, L6 b,	L7 r, L7 g, L7 b, L8 r, L8 g, L8 b,	L9 r, L9 g, L9 b	//Led 1 Red...
                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,   //Layer 1

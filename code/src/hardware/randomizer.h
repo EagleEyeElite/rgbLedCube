@@ -4,8 +4,7 @@
 
 #include "../config.h"
 
-#ifndef RGBLEDCUBE_RANDOMIZER_H
-#define RGBLEDCUBE_RANDOMIZER_H
+#pragma once
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -28,4 +27,3 @@ void initRandom();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_RANDOMIZER_H

@@ -7,9 +7,7 @@
 #include "../../interface/Frame.h"
 #include "../../interface/Color.h"
 
-#ifndef RGBLEDCUBE_STRUCTS_H
-#define RGBLEDCUBE_STRUCTS_H
-
+#pragma once
 
 struct Position {
     uint8_t axis; // may be 0 for x, 1 for y, or 2 for z
@@ -44,6 +42,3 @@ struct MoveProp {
         uint8_t crumbleStop[9];
     } animationInfos;
 };
-
-
-#endif //RGBLEDCUBE_STRUCTS_H

@@ -7,8 +7,7 @@
 #include "../../interface/interface.h"
 #include <avr/io.h>
 
-#ifndef RGBLEDCUBE_CUBE_H
-#define RGBLEDCUBE_CUBE_H
+#pragma once
 
 
 void createCube();
@@ -25,6 +24,3 @@ public:
 private:
     unsigned int hue;
 };
-
-
-#endif //RGBLEDCUBE_CUBE_H

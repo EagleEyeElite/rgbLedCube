@@ -5,9 +5,7 @@
  *  Author: Conrad
  */
 
-
-#ifndef ANIMATIONS_H_
-#define ANIMATIONS_H_
+#pragma once
 
 #include "miscellaneous/basic.h"
 #include "snake/Snake.h"
@@ -16,6 +14,3 @@
 #include "rain/Drop.h"
 
 [[ noreturn ]] void runAnimations() __attribute__((noreturn));
-
-
-#endif /* ANIMATIONS_H_ */

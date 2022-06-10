@@ -9,8 +9,7 @@
 #include "../../../interface/interface.h"
 #include <avr/io.h>
 
-#ifndef STRAIGHT_H_
-#define STRAIGHT_H_
+#pragma once
 
 class Straight {
 public:
@@ -26,5 +25,3 @@ private:
 
     Color *colours;
 };
-
-#endif /* STRAIGHT_H_ */

@@ -5,12 +5,7 @@
  *  Author: Conrad
  */
 
-
-#ifndef SLIDE_H_
-#define SLIDE_H_
+#pragma once
 
 
 void panelAnimation();
-
-
-#endif /* SLIDE_H_ */

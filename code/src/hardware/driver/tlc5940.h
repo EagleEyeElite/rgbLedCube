@@ -3,8 +3,7 @@
  * Its a constant current led driver.
  */
 
-#ifndef RGBLEDCUBE_TLC5940_H
-#define RGBLEDCUBE_TLC5940_H
+#pragma once
 
 #include <stdint.h>
 
@@ -21,4 +20,3 @@ void disableTlc5940();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_TLC5940_H

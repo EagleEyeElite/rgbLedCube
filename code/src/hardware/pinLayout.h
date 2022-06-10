@@ -2,9 +2,7 @@
 // Created by Conrad Klaus on 06.06.22.
 //
 
-#ifndef RGBLEDCUBE_PINLAYOUT_H
-#define RGBLEDCUBE_PINLAYOUT_H
-
+#pragma once
 
 #define SW 2    // PB2 - switch
 
@@ -20,5 +18,3 @@
 #define GSCLK 5 // PD5	//OC1A - grayscale clock
 #define XLAT 6  // PD6 - latches serial data into registers
 #define LED 7   // PD7
-
-#endif //RGBLEDCUBE_PINLAYOUT_H

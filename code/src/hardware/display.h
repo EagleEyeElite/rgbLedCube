@@ -2,8 +2,7 @@
 // Created by Conrad Klaus on 06.06.22.
 //
 
-#ifndef RGBLEDCUBE_DISPLAY_H
-#define RGBLEDCUBE_DISPLAY_H
+#pragma once
 
 #include <stdint.h>
 
@@ -20,4 +19,3 @@ void updateDisplay(const uint8_t image[81]);
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_DISPLAY_H

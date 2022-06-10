@@ -6,8 +6,7 @@
 #include "../../interface/interface.h"
 #include <avr/io.h>
 
-#ifndef RGBLEDCUBE_GRAPH_H
-#define RGBLEDCUBE_GRAPH_H
+#pragma once
 
 void rotatingSinWave();
 
@@ -34,6 +33,3 @@ private:
     Color *colours;
 
 };
-
-
-#endif //RGBLEDCUBE_GRAPH_H

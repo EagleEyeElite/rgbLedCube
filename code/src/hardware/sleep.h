@@ -2,8 +2,7 @@
 // Created by Conrad Klaus on 06.06.22.
 //
 
-#ifndef RGBLEDCUBE_SLEEP_H
-#define RGBLEDCUBE_SLEEP_H
+#pragma once
 
 #include <stdbool.h>
 
@@ -19,5 +18,3 @@ void sleep();
 #ifdef __cplusplus
 }
 #endif
-
-#endif //RGBLEDCUBE_SLEEP_H

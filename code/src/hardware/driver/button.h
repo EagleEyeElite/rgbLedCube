@@ -2,8 +2,7 @@
 // Created by Conrad Klaus on 06.06.22.
 //
 
-#ifndef RGBLEDCUBE_BUTTON_H
-#define RGBLEDCUBE_BUTTON_H
+#pragma once
 
 #include <avr/interrupt.h>
 
@@ -18,4 +17,3 @@ void initButton();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_BUTTON_H

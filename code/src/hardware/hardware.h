@@ -5,8 +5,7 @@
  *  Author: Conrad
  *
  */
-#ifndef HARDWARE_H_
-#define HARDWARE_H_
+#pragma once
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -16,4 +15,3 @@ void initHardware();
 #ifdef __cplusplus
 }
 #endif
-#endif /* HARDWARE_H_ */

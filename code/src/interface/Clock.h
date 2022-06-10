@@ -7,8 +7,7 @@
 
 #include <avr/io.h>
 
-#ifndef __CLOCK_H__
-#define __CLOCK_H__
+#pragma once
 
 
 class Clock {
@@ -33,5 +32,3 @@ void delay(uint16_t time);    // max 65sec
 void benchmark(void (*f)(), uint16_t run_cycles);
 
 //TODO add benchmark to measure FPS frames
-
-#endif //__CLOCK_H__

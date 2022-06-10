@@ -6,13 +6,9 @@
  */
 
 
-#ifndef INTERFACE_H_
-#define INTERFACE_H_
+#pragma once
 
 #include "Clock.h"
 #include "Color.h"
 #include "Frame.h"
 #include "img_preset.h"
-
-
-#endif /* INTERFACE_H_ */

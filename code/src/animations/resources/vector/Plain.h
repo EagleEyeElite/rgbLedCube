@@ -9,8 +9,7 @@
 #include "../../../interface/interface.h"
 #include <avr/io.h>
 
-#ifndef PLAIN_H_
-#define PLAIN_H_
+#pragma once
 
 class Plain {
 public:
@@ -23,6 +22,3 @@ public:
 private:
 
 }; //Plain
-
-
-#endif /* PLAIN_H_ */

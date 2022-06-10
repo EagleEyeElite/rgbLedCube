@@ -7,8 +7,7 @@
 
 #include <avr/io.h>
 
-#ifndef __FRAME_H__
-#define __FRAME_H__
+#pragma once
 
 
 void getImage(unsigned int imageNr, uint8_t image[81]);
@@ -37,5 +36,3 @@ private:
 
     uint8_t ledFrameColours[81]{}; // 24-bit Color resolution
 }; //Frame
-
-#endif //__FRAME_H__

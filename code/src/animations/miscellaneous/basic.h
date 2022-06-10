@@ -6,8 +6,7 @@
  */
 
 
-#ifndef BASIC_H_
-#define BASIC_H_
+#pragma once
 
 void defaultImages();
 
@@ -30,6 +29,3 @@ void redCube();
 void fadeInFadeOut();
 
 void fadePreset();
-
-
-#endif /* BASIC_H_ */

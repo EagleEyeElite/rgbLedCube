@@ -5,8 +5,7 @@
  */
 
 
-#ifndef RGBLEDCUBE_TIMER0_H
-#define RGBLEDCUBE_TIMER0_H
+#pragma once
 
 #include "tlc5940.h"
 #include <avr/interrupt.h>
@@ -23,4 +22,3 @@ void stopLayerSwitching();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_TIMER0_H

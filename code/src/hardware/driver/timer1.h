@@ -3,8 +3,7 @@
  * The clock signal connects to GSCLK of the TLC5940.
  */
 
-#ifndef RGBLEDCUBE_TIMER1_H
-#define RGBLEDCUBE_TIMER1_H
+#pragma once
 
 #include <stdint.h>
 #include <stdint-gcc.h>
@@ -19,4 +18,3 @@ void stopGSCLK();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_TIMER1_H

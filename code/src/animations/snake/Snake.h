@@ -10,9 +10,7 @@
 
 #include <avr/io.h>
 
-
-#ifndef SNAKE_H_
-#define SNAKE_H_
+#pragma once
 
 
 void snake();
@@ -31,5 +29,3 @@ public:
 private:
 
 }; //Snake
-
-#endif /* SNAKE_H_ */

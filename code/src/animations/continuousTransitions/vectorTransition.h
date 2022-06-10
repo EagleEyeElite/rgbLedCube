@@ -6,9 +6,6 @@
  */
 
 
-#ifndef ROTATIONS_H_
-#define ROTATIONS_H_
+#pragma once
 
 void rotatingStraight();
-
-#endif /* ROTATIONS_H_ */

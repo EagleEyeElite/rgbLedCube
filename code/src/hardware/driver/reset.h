@@ -1,5 +1,4 @@
-#ifndef RGBLEDCUBE_RESET_H
-#define RGBLEDCUBE_RESET_H
+#pragma once
 
 #include <stdbool.h>
 
@@ -15,4 +14,3 @@ _Noreturn void reset();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_RESET_H

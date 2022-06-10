@@ -3,8 +3,7 @@
  * It loads the display data into the Led Driver.
  */
 
-#ifndef RGBLEDCUBE_USART_H
-#define RGBLEDCUBE_USART_H
+#pragma once
 
 #include "tlc5940.h"
 #include <avr/interrupt.h>
@@ -22,4 +21,3 @@ void startTransmission(uint8_t data);
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_USART_H

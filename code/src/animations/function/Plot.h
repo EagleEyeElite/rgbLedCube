@@ -7,8 +7,7 @@
 #include "../../interface/interface.h"
 #include <avr/io.h>
 
-#ifndef RGBLEDCUBE_PLOT_H
-#define RGBLEDCUBE_PLOT_H
+#pragma once
 
 void infinityFigure();
 
@@ -34,6 +33,3 @@ private:
     uint8_t Axis[3]{};
 
 }; //Plot
-
-
-#endif //RGBLEDCUBE_PLOT_H

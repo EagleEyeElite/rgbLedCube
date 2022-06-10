@@ -9,8 +9,7 @@
 
 #include <avr/io.h>
 
-#ifndef __DROP_H__
-#define __DROP_H__
+#pragma once
 
 void rain();
 
@@ -32,5 +31,3 @@ public:
     void loadRain(Frame &cubeFrame, float progress);
 
 }; //Drop
-
-#endif //__DROP_H__

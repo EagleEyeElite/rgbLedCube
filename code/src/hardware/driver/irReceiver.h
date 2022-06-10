@@ -2,8 +2,7 @@
  * The infrared receiver accepts IR commands and executes them.
  */
 
-#ifndef RGBLEDCUBE_IRRECEIVER_H
-#define RGBLEDCUBE_IRRECEIVER_H
+#pragma once
 
 #include <avr/interrupt.h>
 
@@ -16,4 +15,3 @@ void initIR();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_IRRECEIVER_H

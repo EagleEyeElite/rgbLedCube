@@ -8,8 +8,7 @@
 #include <avr/io.h>
 #include "../lib/fast_hsv2rgb.h"
 
-#ifndef __COLOUR_H__
-#define __COLOUR_H__
+#pragma once
 
 
 class Color {
@@ -26,5 +25,3 @@ public:
 private:
 
 }; //Color
-
-#endif //__COLOUR_H__

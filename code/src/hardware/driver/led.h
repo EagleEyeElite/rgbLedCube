@@ -1,5 +1,4 @@
-#ifndef RGBLEDCUBE_LED_H
-#define RGBLEDCUBE_LED_H
+#pragma once
 
 #include <stdbool.h>
 
@@ -15,4 +14,3 @@ void toggleLed();
 #ifdef __cplusplus
 }
 #endif
-#endif //RGBLEDCUBE_LED_H

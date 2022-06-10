@@ -7,8 +7,7 @@
 
 #include "../../../interface/interface.h"
 
-#ifndef VEKTOR_H_
-#define VEKTOR_H_
+#pragma once
 
 
 class Vec {
@@ -27,5 +26,3 @@ void moveSupport(float *support, const float *directionOrig);
 void calcLimit(int8_t limit[], const float support[], float direction[]);
 
 void calcPlainPos(float supportReturn[], const float supportOrig[], const float directionA[], const float directionB[]);
-
-#endif /* VEKTOR_H_ */

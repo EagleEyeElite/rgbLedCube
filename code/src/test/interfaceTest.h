@@ -2,8 +2,7 @@
 // Created by conrad on 3/15/20.
 //
 
-#ifndef RGBLEDCUBE_INTERFACETEST_H
-#define RGBLEDCUBE_INTERFACETEST_H
+#pragma once
 
 // run all tests
 void testAll();
@@ -26,6 +25,3 @@ void testBenchmarkSpeed();
 void testStraight();
 
 void testPlain();
-
-
-#endif //RGBLEDCUBE_INTERFACETEST_H

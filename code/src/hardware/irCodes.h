@@ -3,8 +3,7 @@
  */
 
 
-#ifndef RGBLEDCUBE_IRCODES_H
-#define RGBLEDCUBE_IRCODES_H
+#pragma once
 
 
 #define	IR_BPLUS  0xF700FF
@@ -31,6 +30,3 @@
 #define	IR_B11	  0xF7A857
 #define	IR_B12	  0xF76897
 #define	IR_SMOOTH 0xF7E817
-
-
-#endif //RGBLEDCUBE_IRCODES_H

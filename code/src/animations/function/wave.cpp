@@ -5,6 +5,7 @@
 #include "Graph.h"
 #include "../resources/vector/Vec.h"
 #include <math.h>
+#include <stdlib.h>
 
 static float sinWaveFunction(int8_t x, int8_t y, float progress) {
     return (float) sin((progress * 2 * (float) M_PI * 24) + x * cos(progress * 2 * (float) M_PI) +
@@ -12,6 +13,7 @@ static float sinWaveFunction(int8_t x, int8_t y, float progress) {
 }
 
 void rotatingSinWave() {
+    int hm = rand() % 20;
     Clock Watch(20000);
     Frame FrameA(true);
 
@@ -23,9 +25,12 @@ void rotatingSinWave() {
 
     while (Watch.getProgress() <= 3) {
 
-        Wave.loadGraph(FrameA, Watch.getProgress());
+        Wave.loadGraph(FrameA, Watch.getProgress(), 0, hm);
         FrameA.showFrame();
     }
+
+
+
 }
 
 static float vulcanFunction(int8_t x, int8_t y, float progress) {
@@ -40,7 +45,7 @@ void vulcan() {
     Graph Graph(support, vulcanFunction);
 
     while (Watch.getProgress() <= 1) {
-        Graph.loadGraph(FrameA, Watch.getProgress());
+        Graph.loadGraph(FrameA, Watch.getProgress(), -1, 0);
         FrameA.showFrame();
     }
 }
@@ -61,7 +66,7 @@ void jumpingWave() {
     Graph.scale[1] = (2 * (float) M_PI) / 5;
 
     while (Watch.getProgress() <= 10) {
-        Graph.loadGraph(FrameA, Watch.getProgress());
+        Graph.loadGraph(FrameA, Watch.getProgress(), -1, 0);
         FrameA.showFrame();
     }
 }

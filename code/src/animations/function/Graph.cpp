@@ -21,7 +21,7 @@ Graph::Graph(Vec &coordinateOriginal, float (*f)(int8_t, int8_t, float)) {
 
     colours = (Color *) malloc(sizeof(Color));
     *colours = Color();
-    (*colours).loadHSV((unsigned int) (rand() % 360), 255, 255);
+    (*colours).loadHSV((unsigned int) (8), 255, 255);
 
 } //ThreeDGraph
 
@@ -35,14 +35,33 @@ void Graph::setAxis(uint8_t x, uint8_t y, uint8_t z) {
     Axis[2] = y;
 }
 
-void Graph::loadGraph(Frame &FrameA, float progress) {
+void Graph::loadGraph(Frame &FrameA, float progress, int hmm, int random) {
     FrameA.resetFrame();
+
+    //colours->loadHSV(progress * 600, 255, 255);
+
     for (unsigned int x = 1; x < 4; x++) {
         for (unsigned int y = 1; y < 4; y++) {
+
+
             float Koo[] = {(float) x, (float) y, fx(
                     static_cast<int8_t>(((float) x - (coordinate_origin->Matrix[Axis[0]])) * scale[0]),
                     static_cast<int8_t>(((float) y - (coordinate_origin->Matrix[Axis[1]])) * scale[1]),
                     progress) + (coordinate_origin->Matrix[Axis[2]])};
+
+            int hue;
+            switch(hmm) {
+                case 0:
+                    hue = 10 - ((Koo[2] - 1) * 5);
+                    break;
+                case 1:
+                    hue= ((Koo[2] - 1) * 20) + 150;
+                    break;
+                default:
+                    hue = 0;
+                    break;
+            };
+            colours->loadHSV(hue, 255, 255);
 
             float translatedPoint[3];
             for (unsigned int i = 0; i < 3; i++) {

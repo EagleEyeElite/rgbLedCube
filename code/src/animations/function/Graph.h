@@ -22,14 +22,15 @@ public:
 
     void setAxis(uint8_t x, uint8_t y, uint8_t z);  // may be used to switch axis
 
-    void loadGraph(Frame &graphFrame, float progress);
+    void loadGraph(Frame &FrameA, float progress, int hmm, int random);
 
     Vec *coordinate_origin;
     float scale[2]{};
     unsigned int Axis[3]{};
 
+    Color *colours;
+
     float (*fx)(int8_t x, int8_t y, float progress); //=z
 private:
-    Color *colours;
 
 };

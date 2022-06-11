@@ -16,7 +16,7 @@ void runAnimations() {
                        randomVocals, infinityFigure, circleFigure};
 
     while (true) {
-        p[rand() % 10]();
+        p[0]();
     }
 }
 

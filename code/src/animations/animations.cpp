@@ -12,7 +12,7 @@
 #include "function/Plot.h"
 
 void runAnimations() {
-    void (*p[11])() = {rotatingSinWave, snake, vulcan, createCube, jumpingWave, rain, rotatingStraight, panelAnimation,
+    void (*p[11])() = {rotatingSineWave, snake, vulcan, createCube, jumpingWave, rain, rotatingStraight, panelAnimation,
                        randomVocals, infinityFigure, circleFigure};
 
     while (true) {

@@ -8,7 +8,7 @@
 
 #pragma once
 
-void rotatingSinWave();
+void rotatingSineWave();
 
 void vulcan();
 

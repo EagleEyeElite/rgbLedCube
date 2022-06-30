@@ -6,17 +6,17 @@
 #include "../resources/vector/Vec.h"
 #include <math.h>
 
-static float sinWaveFunction(int8_t x, int8_t y, float progress) {
+static float sineWaveFunction(int8_t x, int8_t y, float progress) {
     return (float) sin((progress * 2 * (float) M_PI * 24) + x * cos(progress * 2 * (float) M_PI) +
                        y * sin(progress * 2 * (float) M_PI));
 }
 
-void rotatingSinWave() {
+void rotatingSineWave() {
     Clock Watch(20000);
     Frame FrameA(true);
 
     Vec support(1, 1, 2);
-    Graph Wave(support, sinWaveFunction);
+    Graph Wave(support, sineWaveFunction);
 
     Wave.scale[0] = (2 * (float) M_PI) / 5;
     Wave.scale[1] = (2 * (float) M_PI) / 5;

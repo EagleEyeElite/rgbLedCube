@@ -18,7 +18,7 @@ set(F_CPU 2000000UL)
 set(MCU atmega1284p)
 # Default Baudrate for UART, read avr include/util/setbaud.h for usage
 set(BAUD 9600)
-set(USB_Port /dev/ttyACM0)
+set(USB_Port /dev/cu.usbmodem002985422)
 
 # AVR Fuses, configured for hardware
 # http://eleccelerator.com/fusecalc/fusecalc.php?chip=atmega1284p

@@ -14,12 +14,12 @@ void randomVocals() {
     bool vocal[9];
 
     Color B = Color();
-    B.loadHSV((unsigned int) rand() % 360, 255, 255);
+    B.loadHSV((unsigned int) rand() % 120, 255, 255);
 
     for (bool &i : vocal) {    //place all Vocals (up or down)
         i = static_cast<uint8_t>(rand() % 2);
     }
-    for (int n = 0; n < 60; n++) {    //repeat sending for 30 times
+    for (int n = 0; n < 400; n++) {    //repeat sending for 30 times
         int selectedVocal = rand() % 9;
 
         float Koo[3];

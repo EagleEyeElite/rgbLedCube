@@ -43,6 +43,7 @@ void Frame::addLight(const float *koo, const uint8_t *rgb) {
         writeFrame(ledCoordinates, rgb);
         return;
     }
+
     float brightnessFactor[3];    // used for calculation the brightness of nearby led
     for (unsigned int d = 0; d < 3; d++) {
         float f3;

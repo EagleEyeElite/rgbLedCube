@@ -71,7 +71,7 @@ ISR(INT0_vect, ISR_NOBLOCK) {
     }
     if (recordingFrame) {
         bitPattern <<= 1;
-        if (counterTicks > 31) {    // logical one are longer than 33 ticks
+        if (counterTicks > 31) {    // logical one are longer than 33 ticksUntilReactivated
             bitPattern |= 1;
         }
         if (pulseCount++ > 30) {    // marks end of message

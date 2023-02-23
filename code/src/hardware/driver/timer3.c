@@ -37,7 +37,8 @@ ISR(TIMER3_OVF_vect, ISR_BLOCK) {
 }
 
 /**
- * @return global time ticks since reset.
+ * @return global time ticksUntilReactivated since reset.
+ * 1 tick = 0.0512ms
  */
 uint32_t getGlobalTick() {
     TIMSK3 &= ~(1 << TOIE3);    // disable interrupt
